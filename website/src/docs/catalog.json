@@ -1,0 +1,194 @@
+[
+  {
+    "path": "/docs",
+    "title": "Overview",
+    "group": "Start here",
+    "description": "What Hermes does, how a log message reaches its destination, and where to start with your application.",
+    "file": "index.md",
+    "source": "docs/src/index.md"
+  },
+  {
+    "path": "/docs/getting-started/quick-start",
+    "title": "Quick Start",
+    "group": "Start here",
+    "description": "Get up and running with Hermes in just a few minutes.",
+    "file": "getting-started/quick-start.md",
+    "source": "docs/src/getting-started/quick-start.md"
+  },
+  {
+    "path": "/docs/getting-started/basic-usage",
+    "title": "Basic Usage",
+    "group": "Start here",
+    "description": "Learn the fundamentals of using Hermes in your applications.",
+    "file": "getting-started/basic-usage.md",
+    "source": "docs/src/getting-started/basic-usage.md"
+  },
+  {
+    "path": "/docs/getting-started/installation",
+    "title": "Installation",
+    "group": "Start here",
+    "description": "This guide covers various ways to install and configure Hermes in your project.",
+    "file": "getting-started/installation.md",
+    "source": "docs/src/getting-started/installation.md"
+  },
+  {
+    "path": "/docs/user-guide/log-levels",
+    "title": "Log Levels",
+    "group": "Guides",
+    "description": "Hermes supports standard logging levels with compile-time level checking for optimal performance.",
+    "file": "user-guide/log-levels.md",
+    "source": "docs/src/user-guide/log-levels.md"
+  },
+  {
+    "path": "/docs/user-guide/logger-injection",
+    "title": "Logger Injection",
+    "group": "Guides",
+    "description": "Hermes provides the `@InjectLogger` annotation for zero-boilerplate logger injection using compile-time annotation processing.",
+    "file": "user-guide/logger-injection.md",
+    "source": "docs/src/user-guide/logger-injection.md"
+  },
+  {
+    "path": "/docs/user-guide/mdc",
+    "title": "MDC (Mapped Diagnostic Context)",
+    "group": "Guides",
+    "description": "MDC provides thread-local storage for contextual information that should be included in all log statements within a thread.",
+    "file": "user-guide/mdc.md",
+    "source": "docs/src/user-guide/mdc.md"
+  },
+  {
+    "path": "/docs/user-guide/markers",
+    "title": "Markers",
+    "group": "Guides",
+    "description": "Markers allow you to tag log statements with special labels for filtering and routing purposes.",
+    "file": "user-guide/markers.md",
+    "source": "docs/src/user-guide/markers.md"
+  },
+  {
+    "path": "/docs/user-guide/parameterized-logging",
+    "title": "Parameterized Logging",
+    "group": "Guides",
+    "description": "Hermes uses SLF4J-style `{}` placeholders for efficient message formatting with zero-allocation optimization.",
+    "file": "user-guide/parameterized-logging.md",
+    "source": "docs/src/user-guide/parameterized-logging.md"
+  },
+  {
+    "path": "/docs/advanced/appenders",
+    "title": "Appenders",
+    "group": "Advanced",
+    "description": "Appenders control where log events are written. Hermes provides several built-in appenders with support for custom implementations.",
+    "file": "advanced/appenders.md",
+    "source": "docs/src/advanced/appenders.md"
+  },
+  {
+    "path": "/docs/advanced/async-logging",
+    "title": "Async Logging",
+    "group": "Advanced",
+    "description": "Async logging provides high-throughput, non-blocking log processing using LMAX Disruptor.",
+    "file": "advanced/async-logging.md",
+    "source": "docs/src/advanced/async-logging.md"
+  },
+  {
+    "path": "/docs/advanced/json-logging",
+    "title": "JSON Logging",
+    "group": "Advanced",
+    "description": "JSON logging outputs structured log data ideal for log aggregation, analysis, and centralized logging systems.",
+    "file": "advanced/json-logging.md",
+    "source": "docs/src/advanced/json-logging.md"
+  },
+  {
+    "path": "/docs/advanced/layouts",
+    "title": "Layouts",
+    "group": "Advanced",
+    "description": "Layouts format log events into strings. Hermes provides flexible pattern-based and JSON layouts.",
+    "file": "advanced/layouts.md",
+    "source": "docs/src/advanced/layouts.md"
+  },
+  {
+    "path": "/docs/advanced/logstash",
+    "title": "Logstash Integration",
+    "group": "Advanced",
+    "description": "Hermes provides native Logstash integration for centralized logging with structured JSON events sent over TCP.",
+    "file": "advanced/logstash.md",
+    "source": "docs/src/advanced/logstash.md"
+  },
+  {
+    "path": "/docs/integrations/graalvm",
+    "title": "GraalVM Native Image",
+    "group": "Integrations",
+    "description": "Hermes is fully compatible with GraalVM Native Image, enabling AOT compilation to native executables with zero configuration.",
+    "file": "integrations/graalvm.md",
+    "source": "docs/src/integrations/graalvm.md"
+  },
+  {
+    "path": "/docs/integrations/kotlin",
+    "title": "Kotlin DSL",
+    "group": "Integrations",
+    "description": "Hermes provides idiomatic Kotlin extensions for a more natural logging experience in Kotlin projects.",
+    "file": "integrations/kotlin.md",
+    "source": "docs/src/integrations/kotlin.md"
+  },
+  {
+    "path": "/docs/integrations/spring-boot",
+    "title": "Spring Boot Integration",
+    "group": "Integrations",
+    "description": "Hermes provides native Spring Boot integration through auto-configuration and YAML-based configuration.",
+    "file": "integrations/spring-boot.md",
+    "source": "docs/src/integrations/spring-boot.md"
+  },
+  {
+    "path": "/docs/architecture/overview",
+    "title": "Architecture Overview",
+    "group": "Architecture",
+    "description": "Hermes is designed as a high-performance, modular logging library with a focus on developer experience and zero-allocation optimization.",
+    "file": "architecture/overview.md",
+    "source": "docs/src/architecture/overview.md"
+  },
+  {
+    "path": "/docs/architecture/modules",
+    "title": "Module Structure",
+    "group": "Architecture",
+    "description": "Hermes follows a modular architecture with clear separation of concerns across six Maven modules.",
+    "file": "architecture/modules.md",
+    "source": "docs/src/architecture/modules.md"
+  },
+  {
+    "path": "/docs/architecture/performance",
+    "title": "Performance",
+    "group": "Architecture",
+    "description": "Hermes is designed for high-performance logging with multiple optimization techniques to minimize overhead.",
+    "file": "architecture/performance.md",
+    "source": "docs/src/architecture/performance.md"
+  },
+  {
+    "path": "/docs/api/appenders",
+    "title": "Appenders API",
+    "group": "API reference",
+    "description": "API reference for built-in appenders and creating custom appenders.",
+    "file": "api/appenders.md",
+    "source": "docs/src/api/appenders.md"
+  },
+  {
+    "path": "/docs/api/core",
+    "title": "Core API",
+    "group": "API reference",
+    "description": "Complete API reference for core Hermes interfaces and classes.",
+    "file": "api/core.md",
+    "source": "docs/src/api/core.md"
+  },
+  {
+    "path": "/docs/api/layouts",
+    "title": "Layouts API",
+    "group": "API reference",
+    "description": "API reference for layouts that format log events into strings.",
+    "file": "api/layouts.md",
+    "source": "docs/src/api/layouts.md"
+  },
+  {
+    "path": "/docs/examples",
+    "title": "Examples",
+    "group": "Examples",
+    "description": "Practical starting points for Java applications, Spring Boot services, and Kotlin projects.",
+    "file": "examples.md",
+    "source": "hermes-examples"
+  }
+]

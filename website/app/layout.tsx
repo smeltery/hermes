@@ -1,45 +1,42 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
 
+const title = 'Hermes — Good logs. Less ceremony.';
+const description =
+  'Logging for Java 17+ that stays out of your way. Compile-time logger generation, async delivery, structured output, and integrations for Spring Boot and Kotlin.';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 export const metadata: Metadata = {
-  title: 'Hermes - Zero-Boilerplate Java Logging Library',
-  description: 'High-performance Java 17+ logging library with compile-time annotation processing, async logging via LMAX Disruptor, and comprehensive Spring Boot integration',
+  metadataBase: siteUrl ? new URL(siteUrl) : undefined,
+  title,
+  description,
+  alternates: siteUrl ? { canonical: '/' } : undefined,
+  robots: siteUrl
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
   openGraph: {
-    title: 'Hermes - Zero-Boilerplate Java Logging Library',
-    description: 'High-performance Java 17+ logging library with compile-time annotation processing, async logging via LMAX Disruptor, and comprehensive Spring Boot integration',
-    url: 'https://hermes.dotbrains.io',
+    title,
+    description,
     siteName: 'Hermes',
+    type: 'website',
+    locale: 'en_US',
+    ...(siteUrl ? { url: siteUrl } : {}),
     images: [
       {
-        url: '/og-image.svg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Hermes - Zero-Boilerplate Java Logging Library',
+        alt: 'Hermes — Good logs. Less ceremony.',
       },
     ],
-    locale: 'en_US',
-    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hermes - Zero-Boilerplate Java Logging Library',
-    description: 'High-performance Java 17+ logging library with compile-time annotation processing, async logging via LMAX Disruptor, and comprehensive Spring Boot integration',
-    images: ['/og-image.svg'],
+    title,
+    description,
+    images: ['/og-image.png'],
   },
-  icons: {
-    icon: [
-      {
-        url: '/favicon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: [
-      {
-        url: '/favicon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-  },
+  icons: { icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }] },
 };
 
 export default function RootLayout({
@@ -49,10 +46,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </head>
       <body>{children}</body>
     </html>
   );

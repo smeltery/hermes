@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  typescript: {
-    ignoreBuildErrors: true,
+  async redirects() {
+    return [
+      { source: '/docs/api', destination: '/docs/api/core', permanent: true },
+      {
+        source: '/docs/quick-start',
+        destination: '/docs/getting-started/quick-start',
+        permanent: true,
+      },
+    ];
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

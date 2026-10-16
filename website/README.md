@@ -1,182 +1,44 @@
-# Hermes Marketing Website
+# Hermes website
 
-Public-facing marketing website for Hermes - a zero-boilerplate Java logging library.
+The Hermes marketing site uses Next.js 15, React 18, TypeScript, and pnpm. Its warm ivory and terracotta design is based on the Convrt reference, with original Hermes content and illustrations.
 
-## 🚀 Features
+## Run locally
 
-- **Hero Section** - Compelling intro with key value props and statistics
-- **Stats Section** - Open source highlights and tech stack overview
-- **Features Overview** - 6 key features highlighting @InjectLogger, async logging, Spring Boot integration
-- **How It Works** - 3-step process explanation
-- **Module Architecture** - Breakdown of 6 Maven modules
-- **Code Examples** - Interactive code snippets with Java, YAML, and Kotlin examples
-- **Use Cases** - 6 practical deployment scenarios
-- **Quick Start** - Maven and Gradle setup instructions
-- **Modern UI** - Dark theme with blue/purple/cyan gradient accents
-- **Responsive Design** - Mobile-first approach
-- **Syntax Highlighting** - Code blocks with copy functionality
+```sh
+cd website
+pnpm install --frozen-lockfile
+pnpm dev
+```
 
-## 📦 Tech Stack
+Development and production previews use http://localhost:3003.
 
-- **Framework**: Next.js 15 with App Router
-- **UI Components**: React 18
-- **Styling**: Tailwind CSS 3
-- **Syntax Highlighting**: react-syntax-highlighter
-- **TypeScript**: Full type safety
-- **Icons**: Lucide React
-
-## 🛠️ Setup & Development
-
-### Prerequisites
-
-- Node.js 18+
-- pnpm 8+ (or npm/yarn)
-
-### Installation
-
-```bash
-# Install dependencies
-pnpm install
-
-# Start dev server (default: http://localhost:3003)
-pnpm run dev
-
-# Build for production
-pnpm run build
-
-# Preview production build
+```sh
+pnpm exec tsc --noEmit
+pnpm lint
+pnpm build
 pnpm start
 ```
 
-### Linting
+No environment variables are needed for local use. For a public deployment, set `NEXT_PUBLIC_SITE_URL` to its actual HTTPS origin before building. This enables indexing, canonical metadata, and the sitemap. Without it, preview pages and robots.txt disallow indexing. The existing Vercel configuration remains the deployment entrypoint.
 
-```bash
-# Run ESLint
-pnpm run lint
+## Content and components
 
-# Fix linting issues
-pnpm run lint:fix
-```
+- `app/page.tsx`: hero, capabilities, process, architecture, integrations, closing.
+- `src/components/MarketingLayout.tsx`: navigation and footer.
+- `src/lib/site.ts`: shared repository destination.
+- `src/components/sections/CodeExamplesSection.tsx`: Java, Spring Boot, and Kotlin examples; output is illustrative, not live execution.
+- `src/components/sections/QuickStartSection.tsx`: Maven/Gradle setup and source-build fallback.
+- `src/components/CodeBlock.tsx`: copy controls with honest clipboard failure feedback.
+- `src/styles/globals.css`: design tokens and responsive layouts.
+- `public/brands/`: technology brand icons with provenance in `NOTICE.txt`.
+- `public/favicon.svg`, `public/og-image.svg`, `public/og-image.png`: original Hermes brand assets; the PNG is the social preview.
 
-## 🏗️ Project Structure
+Product claims and snippets come from the root README and implementation. Keep package coordinates and versions synchronized with the root pom.xml. Maven compiler configuration is linked from the installation section. Existing homepage anchor URLs are retained. An unknown route returns a real 404 with a home link.
 
-```
-website/
-├── app/
-│   ├── layout.tsx        # Root layout with metadata
-│   └── page.tsx          # Main landing page
-├── src/
-│   ├── components/
-│   │   ├── CodeBlock.tsx           # Code display with copy button
-│   │   ├── MarketingLayout.tsx     # Nav and Footer
-│   │   └── sections/
-│   │       ├── HeroSection.tsx
-│   │       ├── StatsSection.tsx
-│   │       ├── FeaturesSection.tsx
-│   │       ├── HowItWorksSection.tsx
-│   │       ├── ArchitectureSection.tsx
-│   │       ├── CodeExamplesSection.tsx
-│   │       ├── UseCasesSection.tsx
-│   │       ├── QuickStartSection.tsx
-│   │       └── CTASection.tsx
-│   └── styles/
-│       └── globals.css
-├── public/                # Static assets
-├── tailwind.config.js
-├── next.config.js
-├── tsconfig.json
-├── postcss.config.js
-├── .eslintrc.json
-└── package.json
-```
+## Browser verification
 
-## 🎨 Page Sections
+Use Maestri portals to inspect production at desktop, tablet, mobile, and 320px widths. Exercise each language and build-tool button, clipboard success/failure, mobile menu (including Escape), section links, and 404 recovery. Check keyboard focus, reduced motion, horizontal overflow, internal fragment targets, and automated accessibility findings. Local reports and screenshots live in `.website-studio/`, excluded from Git and deployment.
 
-The website is a single-page marketing site with the following sections:
+## Integrated documentation
 
-1. **Hero** - Zero-boilerplate Java logging headline with 3 key stats
-2. **Stats** - Open source, 6 modules, Spring Boot, GraalVM ready
-3. **Features** - 6 key features with icons (@InjectLogger, async, Spring Boot, Kotlin, appenders, GraalVM)
-4. **How It Works** - 3-step workflow (annotate, build, log)
-5. **Architecture** - 6 Maven modules breakdown
-6. **Code Examples** - Interactive tabs (Java, Spring Boot YAML, Kotlin DSL)
-7. **Use Cases** - 6 practical scenarios (microservices, Spring Boot, high-throughput, Kotlin, native, cloud-native)
-8. **Quick Start** - Maven/Gradle setup with toggle
-9. **CTA** - Final call-to-action with GitHub, docs, and discussions links
-
-## 🎯 Key Features
-
-### Hero Section
-- **Gradient Background** - Blue/purple/cyan theme
-- **Key Stats** - Java 17+, 10M+ logs/sec, Zero reflection
-- **Dual CTAs** - Links to docs and GitHub
-- **Open Source Badge** - PolyForm Shield 1.0.0 license prominent
-
-### Interactive Components
-- **CodeBlock** - Syntax highlighting with copy button
-- **Tabbed Code Examples** - Java, YAML, Kotlin with switching
-- **Maven/Gradle Toggle** - Quick start dependency examples
-
-### Content Sections
-- **Features** - 6 key features (annotation processing, async, Spring Boot, Kotlin, appenders, native)
-- **Architecture** - 6 Maven modules (api, core, processor, spring-boot-starter, kotlin, examples)
-- **Code Examples** - @InjectLogger usage, Spring Boot config, Kotlin DSL
-- **Use Cases** - Microservices, Spring Boot, high-throughput, Kotlin, native image, cloud-native
-- **Quick Start** - Maven and Gradle dependency setup
-
-### Design
-- **Dark Theme** - Slate-based palette with blue/purple/cyan gradient accents
-- **Responsive** - Mobile-first design
-- **Smooth Scrolling** - Anchor link navigation
-- **Hover Animations** - Micro-interactions throughout
-- **Accurate Content** - All features and examples reflect actual Hermes implementation
-
-## 🌐 External Links
-
-The website links to:
-
-- **GitHub Repository**: https://github.com/dotbrains/hermes
-- **GitHub Issues**: https://github.com/dotbrains/hermes/issues
-- **GitHub Discussions**: https://github.com/dotbrains/hermes/discussions
-- **Documentation**: https://dotbrains.github.io/hermes
-
-## 🎨 Color Palette
-
-The site uses a messenger/Hermes inspired color scheme:
-
-- **Background**: `#1a1d29` (dark-slate)
-- **Primary**: `#4a90e2` (hermes-blue)
-- **Secondary**: `#7c3aed` (hermes-purple)
-- **Accent**: `#06b6d4` (hermes-cyan)
-- **Text**: `#fefdfb` (cream)
-- **Muted Text**: `#475569` (slate-gray)
-
-## 🐛 Troubleshooting
-
-### Build Errors
-
-If you encounter build errors after updating dependencies:
-
-```bash
-rm -rf node_modules .next
-rm pnpm-lock.yaml  # or package-lock.json for npm
-pnpm install
-pnpm run build
-```
-
-### Port Conflicts
-
-If port 3003 is already in use, modify the `dev` and `start` scripts in `package.json`:
-
-```json
-{
-  "scripts": {
-    "dev": "next dev -p 3004",
-    "start": "next start -p 3004"
-  }
-}
-```
-
-## 📄 License
-
-MIT
+The Convrt-style documentation is available at `/docs`. Its grouped sidebar, per-page table of contents, search and preview dialog, code copying, Markdown copying, chat links, and mobile navigation use Hermes branding. See `src/docs/README.md` for content and attribution. Run `pnpm test:docs` to check search ranking and edge cases. All catalog routes are statically generated and included in the production sitemap when `NEXT_PUBLIC_SITE_URL` is set.
