@@ -1,28 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  html,
-  body {
-    @apply bg-[#1a1d29] text-[#fefdfb];
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  ::selection {
-    @apply bg-hermes-blue text-white;
-  }
-
-  ::-moz-selection {
-    @apply bg-hermes-blue text-white;
-  }
-}
-
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-hermes-blue via-hermes-purple to-hermes-cyan;
-  }
-}
+@import "./site-1.css";
+@import "./site-2.css";
+@import "./site-3.css";
+@import "./site-4.css";
+@import "./site-5.css";

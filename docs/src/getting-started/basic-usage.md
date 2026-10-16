@@ -9,11 +9,11 @@ There are two ways to create a logger in Hermes:
 ### Using @InjectLogger (Recommended)
 
 ```java
-import io.github.smeltery.InjectLogger;
+import io.github.smeltery.hermes.InjectLogger;
 
 @InjectLogger
 public class UserService extends UserServiceHermesLogger {
-    
+
     public void processUser(String username) {
         log.info("Processing user: {}", username);
     }
@@ -25,12 +25,12 @@ The annotation processor generates a base class with the logger field, eliminati
 ### Manual Logger Creation
 
 ```java
-import io.github.smeltery.Logger;
-import io.github.smeltery.LoggerFactory;
+import io.github.smeltery.hermes.Logger;
+import io.github.smeltery.hermes.LoggerFactory;
 
 public class UserService {
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
-    
+
     public void processUser(String username) {
         log.info("Processing user: {}", username);
     }
@@ -81,15 +81,17 @@ log.debug("Values: {}, {}, {}, {}, {}", v1, v2, v3, v4, v5);
 log.info("Many values: {}, {}, {}, {}, {}, {}", v1, v2, v3, v4, v5, v6);
 ```
 
-!!! warning "Exception as last parameter"
-    When logging with an exception, it must always be the last parameter:
-    ```java
-    // Correct ✓
-    log.error("Failed to process {}", orderId, exception);
-    
-    // Incorrect ✗
-    log.error("Failed to process {}", exception, orderId);
-    ```
+> **Exception as last parameter**
+>
+> When logging with an exception, it must always be the last parameter:
+>
+> ```java
+> // Correct ✓
+> log.error("Failed to process {}", orderId, exception);
+>
+> // Incorrect ✗
+> log.error("Failed to process {}", exception, orderId);
+> ```
 
 ## Lazy Evaluation with Suppliers
 
@@ -160,7 +162,7 @@ Logger log = LoggerFactory.getLogger("SECURITY");
 
 Logger names form a hierarchy:
 
-```
+```text
 com
 ├── example
 │   ├── UserService
@@ -196,8 +198,9 @@ public class UserService extends UserServiceHermesLogger {
 **Pros**: Serializable, works with inheritance
 **Cons**: One logger per instance (slight overhead)
 
-!!! tip "Choose static for most cases"
-    Use static loggers unless you have a specific need for instance loggers (e.g., serialization, inheritance scenarios).
+> **Choose static for most cases**
+>
+> Use static loggers unless you have a specific need for instance loggers (e.g., serialization, inheritance scenarios).
 
 ## Best Practices
 

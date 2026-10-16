@@ -1,0 +1,6 @@
+Brand marks identify supported technologies; they do not imply endorsement.
+Java and Kotlin: Devicon v2.17.0 (MIT), https://github.com/devicons/devicon.
+Spring Boot, Apache Maven, Gradle, GitHub: Simple Icons v16.0.0 (CC0), https://github.com/simple-icons/simple-icons.
+GraalVM rabbit: https://www.graalvm.org/resources/img/home/graalvm_rabbit_icon.svg.
+All trademarks and brand marks belong to their respective owners.
+Chat-provider marks: carried over from smeltery/convrt's docs provider menu; original attribution identifies https://convt.app/docs/examples. ChatGPT, Claude, v0, T3 Chat, Scira and Cursor marks belong to their respective owners.

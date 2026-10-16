@@ -1,0 +1,192 @@
+@media (max-width: 600px) {
+  .site-header {
+    top: 10px;
+    padding-top: 10px;
+  }
+  .navigation > a {
+    padding: 8px 12px;
+  }
+  .navigation .brand {
+    font-size: 15px;
+  }
+  .mobile-links a {
+    font-size: 11px;
+  }
+  #main,
+  .footer {
+    line-height: normal;
+  }
+  #main p,
+  .footer p {
+    line-height: 1.65;
+  }
+  #main h2 {
+    font-size: 30px;
+    line-height: 1.14;
+  }
+  #main h3 {
+    font-size: 16px;
+    letter-spacing: -0.02em;
+  }
+  #main .section {
+    margin-top: 80px;
+  }
+  #main .hero {
+    padding-top: 65px;
+    padding-bottom: 40px;
+  }
+  #main .hero .eyebrow {
+    font-size: 12px;
+    margin-bottom: 20px;
+    gap: 8px;
+  }
+  #main .hero h1 {
+    font-size: 43px;
+    line-height: 1.06;
+    letter-spacing: -0.06em;
+  }
+  #main .hero h1 em {
+    letter-spacing: -0.065em;
+  }
+  #main .hero-description {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 25px auto 28px;
+  }
+  #main .hero .fine {
+    font-size: 12px;
+    margin-top: 16px;
+  }
+  #main .button {
+    min-height: 0;
+    font-weight: 500;
+    padding: 15px 23px;
+    font-size: 14px;
+    gap: 12px;
+    line-height: normal;
+  }
+  #main .how {
+    gap: 36px;
+    padding-bottom: 50px;
+  }
+  #main .section-intro > p:not(.eyebrow) {
+    margin-top: 22px;
+  }
+  #main .feature-grid {
+    gap: 14px;
+  }
+  #main .feature {
+    position: relative;
+    border-radius: 20px;
+  }
+  #main .feature-visual {
+    display: none;
+  }
+  #main .feature-body {
+    padding: 28px 24px 28px 98px;
+  }
+  #main .feature-body .eyebrow {
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+  #main .feature-body .eyebrow svg {
+    position: absolute;
+    left: 24px;
+    top: 28px;
+    width: 52px;
+    height: 58px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: var(--paper);
+    transform: rotate(-5deg);
+  }
+  #main .feature-body > p:last-child {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  #main .closing {
+    padding: 44px 22px 48px;
+    margin-bottom: 56px;
+    border: 1px solid #dec4ac;
+    background: radial-gradient(
+      ellipse at 50% 115%,
+      #c7926f 0%,
+      #e3c4ab 40%,
+      #f0e1d1 78%
+    );
+  }
+  #main .closing h2 {
+    font-size: 34px;
+  }
+  #main .closing > p:not(.eyebrow) {
+    font-size: 13px;
+    margin-top: 22px;
+  }
+  #main .closing-actions {
+    margin-top: 30px;
+    align-items: stretch;
+  }
+  #main .closing-actions .button {
+    border-radius: 12px;
+  }
+  .footer {
+    width: 100%;
+    padding: 40px 18px 0;
+    background: #f0e6dc;
+    border-top: 1px solid var(--line);
+  }
+  .footer-top {
+    gap: 36px;
+    padding-bottom: 40px;
+  }
+  .footer .brand {
+    font-size: 27px;
+  }
+  .footer-top p {
+    font-size: 13px;
+  }
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding-top: 0;
+  }
+  .footer-links > div {
+    font-size: 12px;
+  }
+  .footer-links > div > span {
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 8px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 24px 0 28px;
+    font-size: 11px;
+  }
+}
+@media (max-width: 480px) {
+  .mobile-links a {
+    font-size: 10px;
+  }
+}
+@media (max-width: 360px) {
+  .navigation > a {
+    padding-inline: 8px;
+  }
+  .mobile-links a {
+    padding-inline: 5px;
+  }
+}
+@media (max-width: 400px) {
+  .mobile-links a { padding-inline: 6px; }
+}
+@media (max-width: 360px) {
+  .navigation > a { padding-inline: 6px; }
+  .navigation .brand { font-size: 13px; }
+  .navigation .brand-mark { width: 20px; height: 20px; margin-right: 6px; }
+  .mobile-links a { padding-inline: 4px; font-size: 9px; }
+}

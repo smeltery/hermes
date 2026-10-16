@@ -133,34 +133,35 @@ dependencies {
 
 Understanding the module structure:
 
-| Module | Purpose | Scope |
-|--------|---------|-------|
-| `hermes-api` | Core interfaces and annotations | compile |
-| `hermes-processor` | Annotation processor for `@InjectLogger` | provided |
-| `hermes-core` | Implementation with appenders and layouts | runtime |
-| `hermes-spring-boot-starter` | Spring Boot auto-configuration | compile |
-| `hermes-kotlin` | Kotlin DSL extensions | compile |
+| Module                       | Purpose                                   | Scope    |
+| ---------------------------- | ----------------------------------------- | -------- |
+| `hermes-api`                 | Core interfaces and annotations           | compile  |
+| `hermes-processor`           | Annotation processor for `@InjectLogger`  | provided |
+| `hermes-core`                | Implementation with appenders and layouts | runtime  |
+| `hermes-spring-boot-starter` | Spring Boot auto-configuration            | compile  |
+| `hermes-kotlin`              | Kotlin DSL extensions                     | compile  |
 
-!!! tip "Why different scopes?"
-    - `hermes-api` is needed at compile time for your code
-    - `hermes-processor` only runs during compilation
-    - `hermes-core` is discovered at runtime via ServiceLoader
+> **Why different scopes?**
+>
+> - `hermes-api` is needed at compile time for your code
+> - `hermes-processor` only runs during compilation
+> - `hermes-core` is discovered at runtime via ServiceLoader
 
 ## Verifying Installation
 
 Create a simple test class:
 
 ```java
-import io.github.smeltery.InjectLogger;
+import io.github.smeltery.hermes.InjectLogger;
 
 @InjectLogger
 public class InstallationTest extends InstallationTestHermesLogger {
-    
+
     public static void main(String[] args) {
         InstallationTest test = new InstallationTest();
         test.testLogging();
     }
-    
+
     public void testLogging() {
         log.info("Hermes is installed correctly!");
     }
@@ -175,7 +176,7 @@ mvn clean compile exec:java -Dexec.mainClass="InstallationTest"
 
 You should see:
 
-```
+```text
 [INFO] Hermes is installed correctly!
 ```
 

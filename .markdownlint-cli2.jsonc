@@ -1,0 +1,11 @@
+{
+  "globs": ["**/*.md"],
+  "ignores": ["**/node_modules/**", "**/target/**", "**/.next/**", "**/.website-studio/**", ".flox/**", "**/.venv/**", "site/**", "WARP.md"],
+  "config": {
+    "MD013": false,
+    "MD024": {"siblings_only": true},
+    "MD033": {"allowed_elements": ["img", "br"]},
+    "MD041": false,
+    "MD060": false
+  }
+}

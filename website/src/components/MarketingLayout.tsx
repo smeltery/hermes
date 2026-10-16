@@ -1,277 +1,269 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { Github, ExternalLink, Menu, X } from 'lucide-react';
-import Image from 'next/image';
+import Link from "next/link";
+import { BrandIcon } from "./BrandIcon";
 
-interface MarketingNavProps {
-  transparent?: boolean;
+import { useEffect, useRef, useState } from "react";
+import { DocsSearch } from "@/docs/search/DocsSearch";
+import catalog from "@/docs/catalog.json";
+import "@/docs/search/search.css";
+import "@/styles/marketing-menu.css";
+import {
+  Menu,
+  X,
+  Search,
+  ArrowRight,
+  BookOpen,
+  Layers,
+  ArrowUpRight,
+  Zap,
+} from "lucide-react";
+
+import { repository } from "@/lib/site";
+
+export function Brand() {
+  return (
+    <span className="brand">
+      <span className="brand-mark">
+        <Zap size={19} fill="currentColor" aria-hidden="true" />
+      </span>
+      hermes<span className="brand-dot">.</span>
+    </span>
+  );
 }
 
-export function MarketingNav({ transparent = false }: MarketingNavProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export function MarketingNav() {
+  const menu = useRef<HTMLDialogElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
+  const search = useRef<HTMLDivElement>(null);
+  const overflow = useRef<string | null>(null);
+  const [open, setOpen] = useState(false);
+  function closeMenu() {
+    menu.current?.close();
+  }
+  function openMenu() {
+    overflow.current = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    menu.current?.showModal();
+    setOpen(true);
+  }
+  function openSearch() {
+    closeMenu();
+    requestAnimationFrame(() =>
+      search.current?.querySelector("button")?.click(),
+    );
+  }
+  useEffect(
+    () => () => {
+      if (overflow.current !== null)
+        document.body.style.overflow = overflow.current;
+    },
+    [],
+  );
 
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' });
-    setMobileMenuOpen(false);
-  };
-
+  const links = (
+    <>
+      <Link href="/#how-it-works">How it works</Link>
+      <Link href="/#features">Features</Link>
+      <Link href="/#quick-start">Get started</Link>
+      <Link href="/docs">
+        Docs <ArrowUpRight size={13} />
+      </Link>
+      <a href={repository}>
+        <BrandIcon name="github" size={15} /> GitHub
+      </a>
+    </>
+  );
   return (
-    <nav className={`fixed left-0 right-0 top-0 z-50 w-full px-4 sm:px-6 py-4 backdrop-blur-xl transition-colors ${transparent ? 'bg-dark-slate/80' : 'bg-dark-slate border-b border-hermes-blue/30'}`}>
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <a href="/" className="hover:opacity-80 transition-opacity flex items-center gap-2 sm:gap-3">
-          <Image src="/favicon.svg" alt="Hermes" width={32} height={32} className="w-7 h-7 sm:w-8 sm:h-8" />
-          <span className="text-lg sm:text-xl font-bold text-cream">Hermes</span>
-        </a>
-        
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
-          <a
-            href="/#features"
-            onClick={(e) => handleSmoothScroll(e, '#features')}
-            className="text-cream/80 hover:text-cream transition-colors text-sm font-medium"
-          >
-            Features
-          </a>
-          <a
-            href="/#how-it-works"
-            onClick={(e) => handleSmoothScroll(e, '#how-it-works')}
-            className="text-cream/80 hover:text-cream transition-colors text-sm font-medium"
-          >
-            How It Works
-          </a>
-          <a
-            href="/#use-cases"
-            onClick={(e) => handleSmoothScroll(e, '#use-cases')}
-            className="text-cream/80 hover:text-cream transition-colors text-sm font-medium"
-          >
-            Use Cases
-          </a>
-          <a
-            href="https://smeltery.github.io/hermes"
-            className="text-cream/80 hover:text-cream transition-colors text-sm font-medium inline-flex items-center gap-1.5"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Docs
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
-          <div className="flex items-center gap-3 ml-2">
-            <a
-              href="https://github.com/smeltery/hermes"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-dark-gray hover:bg-dark-slate border border-hermes-blue text-cream rounded-lg transition-colors text-sm font-medium"
-            >
-              <Github className="w-4 h-4" />
-              <span>Star</span>
-            </a>
-            <a
-              href="/#quick-start"
-              onClick={(e) => handleSmoothScroll(e, '#quick-start')}
-              className="bg-gradient-to-r from-hermes-blue to-hermes-purple hover:from-hermes-purple hover:to-hermes-cyan text-white px-6 py-2 rounded-lg shadow-lg shadow-hermes-blue/30 text-sm font-semibold transition-all"
-            >
-              Get Started
-            </a>
+    <header className="site-header">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <nav className="navigation" aria-label="Primary">
+        <Link href="/" aria-label="Hermes home">
+          <Brand />
+        </Link>
+        <div className="desktop-links">{links}</div>
+        <div className="marketing-mobile-controls">
+          <div className="marketing-search" ref={search}>
+            <DocsSearch
+              searchable={catalog.map((page) => ({ ...page, sections: [] }))}
+            />
           </div>
+          <button
+            className="marketing-menu-toggle"
+            ref={toggle}
+            onClick={openMenu}
+            aria-expanded={open}
+            aria-haspopup="dialog"
+            aria-controls="marketing-menu"
+          >
+            Menu <Menu size={18} strokeWidth={1.6} />
+          </button>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 text-cream hover:text-hermes-blue transition-colors"
-          aria-label="Toggle menu"
+        <dialog
+          id="marketing-menu"
+          className="marketing-menu"
+          ref={menu}
+          aria-labelledby="marketing-menu-title"
+          onClose={() => {
+            setOpen(false);
+            document.body.style.overflow = overflow.current ?? "";
+            overflow.current = null;
+            toggle.current?.focus();
+          }}
+          onKeyDown={(event) => {
+            if (
+              (event.metaKey || event.ctrlKey) &&
+              event.key.toLowerCase() === "k"
+            )
+              closeMenu();
+            if (event.key === "Escape") {
+              event.preventDefault();
+              closeMenu();
+            }
+          }}
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden fixed top-[72px] left-0 right-0 bg-dark-slate border-b border-hermes-blue/30 backdrop-blur-xl shadow-xl z-40">
-          <div className="px-4 py-6 space-y-4">
-            <a
-              href="/#features"
-              onClick={(e) => handleSmoothScroll(e, '#features')}
-              className="block text-cream/80 hover:text-cream transition-colors text-base font-medium py-2"
+          <div className="marketing-menu-header">
+            <Link href="/" onClick={closeMenu} aria-label="Hermes home">
+              <Brand />
+            </Link>
+            <button
+              className="marketing-menu-close"
+              autoFocus
+              onClick={closeMenu}
+              aria-label="Close navigation"
             >
-              Features
-            </a>
-            <a
-              href="/#how-it-works"
-              onClick={(e) => handleSmoothScroll(e, '#how-it-works')}
-              className="block text-cream/80 hover:text-cream transition-colors text-base font-medium py-2"
-            >
-              How It Works
-            </a>
-            <a
-              href="/#use-cases"
-              onClick={(e) => handleSmoothScroll(e, '#use-cases')}
-              className="block text-cream/80 hover:text-cream transition-colors text-base font-medium py-2"
-            >
-              Use Cases
-            </a>
-            <a
-              href="https://smeltery.github.io/hermes"
-              className="block text-cream/80 hover:text-cream transition-colors text-base font-medium py-2 inline-flex items-center gap-2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Docs
-              <ExternalLink className="w-4 h-4" />
-            </a>
-            <div className="pt-4 space-y-3 border-t border-hermes-blue/20">
-              <a
-                href="https://github.com/smeltery/hermes"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-4 py-3 bg-dark-gray hover:bg-dark-slate border border-hermes-blue text-cream rounded-lg transition-colors text-sm font-medium w-full"
-              >
-                <Github className="w-4 h-4" />
-                <span>Star on GitHub</span>
-              </a>
-              <a
-                href="/#quick-start"
-                onClick={(e) => handleSmoothScroll(e, '#quick-start')}
-                className="flex items-center justify-center bg-gradient-to-r from-hermes-blue to-hermes-purple hover:from-hermes-purple hover:to-hermes-cyan text-white px-6 py-3 rounded-lg shadow-lg shadow-hermes-blue/30 text-sm font-semibold transition-all w-full"
-              >
-                Get Started
-              </a>
-            </div>
+              <X size={22} strokeWidth={1.6} />
+            </button>
           </div>
-        </div>
-      )}
-    </nav>
+          <div className="marketing-menu-content">
+            <p className="eyebrow">A little direction goes a long way</p>
+            <h2 id="marketing-menu-title">What’s next?</h2>
+            <button className="marketing-menu-search" onClick={openSearch}>
+              <Search size={18} /> <span>Search documentation</span>
+              <kbd>⌘ K</kbd>
+            </button>
+            <nav
+              className="marketing-menu-cards"
+              aria-label="Mobile navigation"
+            >
+              <Link
+                className="featured"
+                href="/#quick-start"
+                onClick={closeMenu}
+              >
+                <Zap size={24} />
+                <span>
+                  <strong>Get started</strong>
+                  <small>Add a little Hermes to your application.</small>
+                </span>
+                <ArrowRight size={18} />
+              </Link>
+              <Link href="/#how-it-works" onClick={closeMenu}>
+                <BookOpen size={24} />
+                <strong>How it works</strong>
+                <small>From setup to your first log message.</small>
+              </Link>
+              <Link href="/#features" onClick={closeMenu}>
+                <Layers size={24} />
+                <strong>Explore features</strong>
+                <small>Context, structure, and reliable delivery.</small>
+              </Link>
+            </nav>
+            <div className="marketing-menu-section">
+              <h3>Build with Hermes</h3>
+              <span>Your stack. Your way.</span>
+            </div>
+            <nav
+              className="marketing-menu-tools"
+              aria-label="Integration documentation"
+            >
+              {[
+                {
+                  name: "Java",
+                  icon: "java" as const,
+                  href: "/docs/getting-started/quick-start",
+                  label: "Quick start",
+                },
+                {
+                  name: "Spring Boot",
+                  icon: "spring" as const,
+                  href: "/docs/integrations/spring-boot",
+                  label: "Integration",
+                },
+                {
+                  name: "Kotlin",
+                  icon: "kotlin" as const,
+                  href: "/docs/integrations/kotlin",
+                  label: "DSL",
+                },
+                {
+                  name: "GraalVM",
+                  icon: "graalvm" as const,
+                  href: "/docs/integrations/graalvm",
+                  label: "Native image",
+                },
+              ].map((item) => (
+                <Link key={item.name} href={item.href} onClick={closeMenu}>
+                  <BrandIcon name={item.icon} size={30} />
+                  <span>{item.name}</span>
+                  <small>{item.label}</small>
+                  <ArrowUpRight size={16} />
+                </Link>
+              ))}
+              <Link href="/docs" onClick={closeMenu}>
+                <BookOpen size={30} />
+                <span>Documentation</span>
+                <ArrowUpRight size={16} />
+              </Link>
+            </nav>
+          </div>
+          <div className="marketing-menu-footer">
+            <a href={repository}>
+              <BrandIcon name="github" size={20} /> GitHub
+            </a>
+            <a href={`${repository}/issues`}>Feedback &amp; issues ↗</a>
+          </div>
+        </dialog>
+      </nav>
+    </header>
   );
 }
 
 export function MarketingFooter() {
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <footer className="bg-dark-slate border-t border-hermes-blue/30 py-12 sm:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Image src="/favicon.svg" alt="Hermes" width={32} height={32} className="w-8 h-8" />
-              <span className="text-xl font-bold text-cream">Hermes</span>
-            </div>
-            <p className="text-cream/60 text-sm leading-relaxed mb-4">
-              Zero-boilerplate Java logging library with compile-time annotation processing. Open source and free to use.
-            </p>
-            <div className="flex items-center gap-3">
-              <a
-                href="https://github.com/smeltery/hermes"
-                className="text-cream/60 hover:text-cream transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-          <div>
-            <h4 className="text-cream font-semibold mb-4 text-sm uppercase tracking-wider">Product</h4>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="/#features"
-                  onClick={(e) => handleSmoothScroll(e, '#features')}
-                  className="text-cream/70 hover:text-cream text-sm transition-colors inline-block cursor-pointer"
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#how-it-works"
-                  onClick={(e) => handleSmoothScroll(e, '#how-it-works')}
-                  className="text-cream/70 hover:text-cream text-sm transition-colors inline-block cursor-pointer"
-                >
-                  How It Works
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#use-cases"
-                  onClick={(e) => handleSmoothScroll(e, '#use-cases')}
-                  className="text-cream/70 hover:text-cream text-sm transition-colors inline-block cursor-pointer"
-                >
-                  Use Cases
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/#quick-start"
-                  onClick={(e) => handleSmoothScroll(e, '#quick-start')}
-                  className="text-cream/70 hover:text-cream text-sm transition-colors inline-block cursor-pointer"
-                >
-                  Quick Start
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-cream font-semibold mb-4 text-sm uppercase tracking-wider">Resources</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="https://smeltery.github.io/hermes" className="text-cream/70 hover:text-cream text-sm transition-colors inline-flex items-center gap-1.5" target="_blank" rel="noopener noreferrer">
-                  Documentation
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-              <li>
-                <a href="https://smeltery.github.io/hermes/architecture/overview" className="text-cream/70 hover:text-cream text-sm transition-colors inline-flex items-center gap-1.5" target="_blank" rel="noopener noreferrer">
-                  Architecture
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/smeltery/hermes/tree/master/hermes-examples" className="text-cream/70 hover:text-cream text-sm transition-colors inline-flex items-center gap-1.5" target="_blank" rel="noopener noreferrer">
-                  Examples
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-cream font-semibold mb-4 text-sm uppercase tracking-wider">Community</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="https://github.com/smeltery/hermes" className="text-cream/70 hover:text-cream text-sm transition-colors inline-flex items-center gap-1.5" target="_blank" rel="noopener noreferrer">
-                  GitHub Repository
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/smeltery/hermes/issues" className="text-cream/70 hover:text-cream text-sm transition-colors inline-flex items-center gap-1.5" target="_blank" rel="noopener noreferrer">
-                  Report Issues
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/smeltery/hermes/discussions" className="text-cream/70 hover:text-cream text-sm transition-colors inline-flex items-center gap-1.5" target="_blank" rel="noopener noreferrer">
-                  Discussions
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="pt-8 border-t border-hermes-blue/30 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-cream/60 text-sm">
-            © {new Date().getFullYear()} Hermes. All rights reserved.
-          </p>
-          <p className="text-cream/50 text-xs">
-            Licensed under PolyForm Shield 1.0.0
+    <footer className="shell footer">
+      <div className="footer-top">
+        <div>
+          <Link href="/" aria-label="Hermes home">
+            <Brand />
+          </Link>
+          <p>
+            A little less boilerplate.
+            <br />A lot more signal.
           </p>
         </div>
+        <div className="footer-links">
+          <div>
+            <span>Build with Hermes</span>
+            <Link href="/#quick-start">Quick start</Link>
+            <Link href="/#code-examples">Code examples</Link>
+            <Link href="/docs">Documentation ↗</Link>
+          </div>
+          <div>
+            <span>In the open</span>
+            <a href={repository}>Source on GitHub ↗</a>
+            <a href={`${repository}/issues`}>Issues & feedback ↗</a>
+            <a href={`${repository}/blob/master/LICENSE`}>
+              PolyForm Shield license ↗
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <span>Hermes · A Java logging library</span>
+        <Link href="/#top">Back to top ↑</Link>
       </div>
     </footer>
   );

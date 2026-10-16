@@ -1,0 +1,210 @@
+.integration-list article {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--line);
+}
+.integration-symbol {
+  width: 45px;
+  height: 45px;
+  background: #f0e1d2;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #915d3d;
+  font:
+    22px Georgia,
+    serif;
+  flex-shrink: 0;
+}
+.integration-list h3 {
+  font-size: 15px;
+}
+.integration-list p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+.integration-list a {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 12px 0;
+}
+.installation {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 65px;
+  align-items: start;
+}
+.install-steps {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
+  font-size: 12px;
+  display: grid;
+  gap: 15px;
+}
+.install-steps span {
+  font: 10px monospace;
+  color: var(--muted);
+  margin-right: 14px;
+}
+.install-panel {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
+}
+.install-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  padding: 14px 17px;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--muted);
+}
+.code-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 18px;
+  color: var(--muted);
+  font: 11px monospace;
+}
+.code-block pre {
+  margin: 0;
+  padding: 10px 18px 24px;
+  overflow: auto;
+  color: #8c4d31;
+  font-size: 11px;
+  line-height: 1.9;
+}
+.install-note {
+  border-top: 1px solid var(--line);
+  background: #f8f0e7;
+  padding: 16px 20px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.closing {
+  padding: 66px 24px;
+  text-align: center;
+  border-radius: 24px;
+  background: #f0e1d1;
+}
+.closing-mark {
+  display: inline-flex;
+  padding: 14px;
+  color: #ac6946;
+  margin-bottom: 10px;
+}
+.closing .eyebrow {
+  margin-bottom: 18px;
+}
+.closing h2 {
+  font-size: clamp(30px, 4vw, 43px);
+}
+.closing > p:not(.eyebrow) {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 23px;
+}
+.closing-actions {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer {
+  padding-top: 80px;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 50px;
+}
+.footer-top p {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.footer-links {
+  display: flex;
+  gap: 75px;
+  padding-top: 5px;
+}
+.footer-links > div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 11px;
+}
+.footer-links > div > span {
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-bottom {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.not-found {
+  min-height: 60vh;
+  text-align: center;
+  padding: 100px 20px;
+}
+.not-found p {
+  margin: 25px 0;
+}
+@media (max-width: 800px) {
+  .how,
+  .architecture,
+  .installation {
+    gap: 35px;
+  }
+  .feature-grid {
+    gap: 12px;
+  }
+  .feature-body {
+    padding: 19px;
+  }
+  .feature-visual {
+    padding: 20px 12px;
+  }
+  .diagram-labels {
+    font-size: 8px;
+  }
+  .context-card {
+    font-size: 8px;
+    padding: 12px 8px;
+  }
+  .destination-diagram {
+    gap: 12px;
+  }
+  .destination-diagram > svg {
+    padding: 10px;
+  }
+  .editor {
+    padding-inline: 15px;
+  }
+  .output-panel {
+    padding: 18px;
+  }
+}

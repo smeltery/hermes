@@ -1,116 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <title>Hermes — Good logs. Less ceremony.</title>
+  <desc>A Java logging library with compile-time logger generation and structured output.</desc>
   <defs>
-    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a1d29;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0f1117;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:0.2" />
-      <stop offset="50%" style="stop-color:#7c3aed;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#4a90e2;stop-opacity:0.2" />
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#513425" flood-opacity=".12"/></filter>
+    <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#faf7f1"/><stop offset="1" stop-color="#eee0d0"/></linearGradient>
   </defs>
-
-  <!-- Background -->
-  <rect width="1200" height="630" fill="url(#bgGradient)"/>
-
-  <!-- Decorative grid pattern -->
-  <g opacity="0.03">
-    <line x1="0" y1="150" x2="1200" y2="150" stroke="#fff" stroke-width="1"/>
-    <line x1="0" y1="315" x2="1200" y2="315" stroke="#fff" stroke-width="1"/>
-    <line x1="0" y1="480" x2="1200" y2="480" stroke="#fff" stroke-width="1"/>
-    <line x1="300" y1="0" x2="300" y2="630" stroke="#fff" stroke-width="1"/>
-    <line x1="600" y1="0" x2="600" y2="630" stroke="#fff" stroke-width="1"/>
-    <line x1="900" y1="0" x2="900" y2="630" stroke="#fff" stroke-width="1"/>
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#302923">
+    <rect x="62" y="48" width="42" height="42" rx="12" fill="#edd5bf"/>
+    <path d="m86 54-15 21h11l-2 13 15-21H84z" fill="#a45d3c"/>
+    <text x="117" y="80" font-size="34" font-weight="700" letter-spacing="-1.8">hermes<tspan fill="#a45d3c">.</tspan></text>
+    <text x="1138" y="77" text-anchor="end" font-size="14" fill="#7b695c">A little library. A lot less boilerplate.</text>
+    <text x="62" y="240" font-size="72" font-weight="700" letter-spacing="-4">Good logs.</text>
+    <text x="62" y="321" font-family="Georgia, serif" font-style="italic" font-size="72" letter-spacing="-3.5">Less ceremony.</text>
+    <text x="65" y="379" font-size="21" fill="#78675b">Logging for Java that stays</text>
+    <text x="65" y="410" font-size="21" fill="#78675b">out of your way.</text>
+    <g transform="translate(64 459)"><rect width="207" height="44" rx="22" fill="#3a2d26"/><text x="23" y="28" font-size="14" fill="#fffaf4">Write it. Hermes delivers.</text></g>
+    <g filter="url(#shadow)">
+      <rect x="609" y="161" width="529" height="250" rx="18" fill="#fffdfa" stroke="#dfd0c1"/>
+      <path d="M609 208h529" stroke="#e6d9cc"/>
+      <circle cx="632" cy="185" r="4" fill="#d9c9ba"/><circle cx="647" cy="185" r="4" fill="#d9c9ba"/><circle cx="662" cy="185" r="4" fill="#d9c9ba"/>
+      <text x="1116" y="189" text-anchor="end" font-size="12" fill="#887362">OrderService.java</text>
+      <g font-family="monospace" font-size="16">
+        <text x="636" y="247" fill="#a45d3c">@InjectLogger</text>
+        <text x="636" y="279">class OrderService</text>
+        <text x="655" y="308">extends OrderServiceHermesLogger {</text>
+        <text x="655" y="349">log.info(<tspan fill="#a45d3c">"Order {} accepted"</tspan>, id);</text>
+        <text x="636" y="383">}</text>
+      </g>
+      <rect x="654" y="429" width="484" height="99" rx="14" fill="#302923"/>
+      <g font-family="monospace" font-size="13"><text x="678" y="462" fill="#c9ac95">08:35:07.142 <tspan fill="#e6be95">INFO</tspan> OrderService</text><text x="678" y="492" fill="#fff7ef">Order ORD-1042 accepted</text></g>
+    </g>
+    <path d="M627 416v36h15" fill="none" stroke="#af8060" stroke-width="2"/><path d="m638 447 5 5-5 5" fill="none" stroke="#af8060" stroke-width="2"/>
+    <path d="M62 564h1076" stroke="#dac8b6"/>
+    <text x="64" y="596" font-size="13" fill="#7b695c">JAVA 17+  /  SPRING BOOT  /  KOTLIN</text>
+    <text x="1138" y="596" text-anchor="end" font-size="13" fill="#7b695c">smeltery / hermes</text>
   </g>
-
-  <!-- Accent bar at top -->
-  <rect width="1200" height="4" fill="url(#accentGradient)"/>
-
-  <!-- Logo symbol (same as favicon) -->
-  <g transform="translate(100, 200)">
-    <rect width="100" height="100" rx="20" fill="url(#logoGradient)"/>
-    <path d="M50 25 L65 40 L65 75 L50 90 L35 75 L35 40 Z" fill="white" opacity="0.9"/>
-    <circle cx="50" cy="50" r="8" fill="#4a90e2"/>
-  </g>
-
-  <!-- Main heading -->
-  <text x="240" y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        font-size="72" font-weight="700" fill="white" letter-spacing="-1">
-    Hermes
-  </text>
-
-  <!-- Subtitle -->
-  <text x="240" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        font-size="32" font-weight="400" fill="#94a3b8" letter-spacing="0">
-    Zero-Boilerplate Java Logging
-  </text>
-
-  <!-- Feature highlights -->
-  <g transform="translate(240, 360)">
-    <!-- Badge 1 -->
-    <rect x="0" y="0" width="180" height="40" rx="20" fill="#1e293b" stroke="#4a90e2" stroke-width="1.5"/>
-    <text x="90" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-          font-size="15" font-weight="600" fill="#4a90e2" text-anchor="middle">
-      Java 17+
-    </text>
-
-    <!-- Badge 2 -->
-    <rect x="195" y="0" width="210" height="40" rx="20" fill="#1e293b" stroke="#7c3aed" stroke-width="1.5"/>
-    <text x="300" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-          font-size="15" font-weight="600" fill="#7c3aed" text-anchor="middle">
-      High Performance
-    </text>
-
-    <!-- Badge 3 -->
-    <rect x="0" y="55" width="210" height="40" rx="20" fill="#1e293b" stroke="#4a90e2" stroke-width="1.5"/>
-    <text x="105" y="81" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-          font-size="15" font-weight="600" fill="#4a90e2" text-anchor="middle">
-      Spring Boot Ready
-    </text>
-  </g>
-
-  <!-- Code snippet decoration -->
-  <g transform="translate(700, 160)">
-    <rect width="400" height="260" rx="12" fill="#0f1117" stroke="#2d3748" stroke-width="2"/>
-
-    <!-- Code header -->
-    <rect width="400" height="40" rx="12" fill="#1e293b"/>
-    <circle cx="20" cy="20" r="5" fill="#ef4444" opacity="0.8"/>
-    <circle cx="40" cy="20" r="5" fill="#f59e0b" opacity="0.8"/>
-    <circle cx="60" cy="20" r="5" fill="#10b981" opacity="0.8"/>
-
-    <!-- Code content -->
-    <text x="20" y="75" font-family="'SF Mono', Monaco, 'Courier New', monospace"
-          font-size="15" fill="#7c3aed" font-weight="500">@InjectLogger</text>
-    <text x="20" y="100" font-family="'SF Mono', Monaco, 'Courier New', monospace"
-          font-size="15" fill="#e2e8f0">public class</text>
-    <text x="140" y="100" font-family="'SF Mono', Monaco, 'Courier New', monospace"
-          font-size="15" fill="#4a90e2"> UserService</text>
-    <text x="20" y="125" font-family="'SF Mono', Monaco, 'Courier New', monospace"
-          font-size="15" fill="#e2e8f0">    extends</text>
-    <text x="110" y="125" font-family="'SF Mono', Monaco, 'Courier New', monospace"
-          font-size="15" fill="#94a3b8"> UserService...</text>
-
-    <text x="20" y="160" font-family="'SF Mono', Monaco, 'Courier New', monospace"
-          font-size="15" fill="#64748b">  // Zero reflection</text>
-    <text x="20" y="185" font-family="'SF Mono', Monaco, 'Courier New', monospace"
-          font-size="15" fill="#64748b">  // Zero boilerplate</text>
-    <text x="20" y="210" font-family="'SF Mono', Monaco, 'Courier New', monospace"
-          font-size="15" fill="#64748b">  // Just fast logging</text>
-  </g>
-
-  <!-- Bottom accent -->
-  <rect y="626" width="1200" height="4" fill="url(#accentGradient)"/>
 </svg>

@@ -51,3 +51,9 @@ TEST-*.xml
 *.zip
 *.tar.gz
 *.rar
+
+# Tooling and documentation build output
+node_modules/
+.venv/
+site/
+dist/
