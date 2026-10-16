@@ -5,14 +5,14 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.dotbrains</groupId>
+    <groupId>io.github.smeltery</groupId>
     <artifactId>hermes-parent</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <name>Hermes Logging</name>
     <description>High-performance logging library for Java with excellent developer experience</description>
-    <url>https://github.com/dotbrains/hermes</url>
+    <url>https://github.com/smeltery/hermes</url>
 
     <licenses>
         <license>
@@ -24,16 +24,16 @@
 
     <developers>
         <developer>
-            <id>dotbrains</id>
-            <name>DotBrains</name>
-            <url>https://github.com/dotbrains</url>
+            <id>smeltery</id>
+            <name>Smeltery</name>
+            <url>https://github.com/smeltery</url>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/dotbrains/hermes.git</connection>
-        <developerConnection>scm:git:ssh://github.com:dotbrains/hermes.git</developerConnection>
-        <url>https://github.com/dotbrains/hermes/tree/master</url>
+        <connection>scm:git:git://github.com/smeltery/hermes.git</connection>
+        <developerConnection>scm:git:ssh://github.com:smeltery/hermes.git</developerConnection>
+        <url>https://github.com/smeltery/hermes/tree/master</url>
     </scm>
 
     <distributionManagement>
@@ -73,17 +73,17 @@
         <dependencies>
             <!-- Internal modules -->
             <dependency>
-                <groupId>io.github.dotbrains</groupId>
+                <groupId>io.github.smeltery</groupId>
                 <artifactId>hermes-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.github.dotbrains</groupId>
+                <groupId>io.github.smeltery</groupId>
                 <artifactId>hermes-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.github.dotbrains</groupId>
+                <groupId>io.github.smeltery</groupId>
                 <artifactId>hermes-processor</artifactId>
                 <version>${project.version}</version>
             </dependency>

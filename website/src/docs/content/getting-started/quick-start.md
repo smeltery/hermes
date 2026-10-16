@@ -12,14 +12,14 @@ Add the following dependencies to your `pom.xml`:
 <dependencies>
     <!-- Core API -->
     <dependency>
-        <groupId>io.github.dotbrains</groupId>
+        <groupId>io.github.smeltery</groupId>
         <artifactId>hermes-api</artifactId>
         <version>1.0.0</version>
     </dependency>
 
     <!-- Annotation processor (for @InjectLogger) -->
     <dependency>
-        <groupId>io.github.dotbrains</groupId>
+        <groupId>io.github.smeltery</groupId>
         <artifactId>hermes-processor</artifactId>
         <version>1.0.0</version>
         <scope>provided</scope>
@@ -27,7 +27,7 @@ Add the following dependencies to your `pom.xml`:
 
     <!-- Core implementation -->
     <dependency>
-        <groupId>io.github.dotbrains</groupId>
+        <groupId>io.github.smeltery</groupId>
         <artifactId>hermes-core</artifactId>
         <version>1.0.0</version>
         <scope>runtime</scope>
@@ -42,7 +42,7 @@ Add the following dependencies to your `pom.xml`:
             <configuration>
                 <annotationProcessorPaths>
                     <path>
-                        <groupId>io.github.dotbrains</groupId>
+                        <groupId>io.github.smeltery</groupId>
                         <artifactId>hermes-processor</artifactId>
                         <version>1.0.0</version>
                     </path>
@@ -59,9 +59,9 @@ Add the following to your `build.gradle`:
 
 ```gradle
 dependencies {
-    implementation 'io.github.dotbrains:hermes-api:1.0.0'
-    annotationProcessor 'io.github.dotbrains:hermes-processor:1.0.0'
-    runtimeOnly 'io.github.dotbrains:hermes-core:1.0.0'
+    implementation 'io.github.smeltery:hermes-api:1.0.0'
+    annotationProcessor 'io.github.smeltery:hermes-processor:1.0.0'
+    runtimeOnly 'io.github.smeltery:hermes-core:1.0.0'
 }
 ```
 
@@ -72,7 +72,7 @@ dependencies {
 The easiest way to use Hermes is with the `@InjectLogger` annotation:
 
 ```java
-import io.github.dotbrains.hermes.InjectLogger;
+import io.github.smeltery.hermes.InjectLogger;
 
 @InjectLogger
 public class UserService extends UserServiceHermesLogger {
@@ -99,8 +99,8 @@ public class UserService extends UserServiceHermesLogger {
 If you prefer not to use annotation processing:
 
 ```java
-import io.github.dotbrains.hermes.Logger;
-import io.github.dotbrains.hermes.LoggerFactory;
+import io.github.smeltery.hermes.Logger;
+import io.github.smeltery.hermes.LoggerFactory;
 
 public class UserService {
     private static final Logger log = LoggerFactory.getLogger(UserService.class);

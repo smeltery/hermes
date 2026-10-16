@@ -24,7 +24,7 @@ PatternLayout layout = new PatternLayout(
 | `%thread`    | Thread name           | `http-nio-8080-exec-1`                   |
 | `%level`     | Log level             | `INFO`                                   |
 | `%-5level`   | Left-padded level     | `INFO `                                  |
-| `%logger`    | Full logger name      | `io.github.dotbrains.hermes.UserService` |
+| `%logger`    | Full logger name      | `io.github.smeltery.hermes.UserService` |
 | `%logger{n}` | Abbreviated logger    | `i.g.d.UserService`                      |
 | `%msg`       | Log message           | `User logged in`                         |
 | `%n`         | Newline               | (platform-specific)                      |
@@ -53,7 +53,7 @@ PatternLayout layout = new PatternLayout(
 ```java
 // Full name
 "%logger"
-// io.github.dotbrains.hermes.UserService
+// io.github.smeltery.hermes.UserService
 
 // Abbreviated to 36 chars
 "%logger{36}"
@@ -91,7 +91,7 @@ PatternLayout prodLayout = new PatternLayout(
 Example output:
 
 ```
-2024-01-10 10:30:45.123 [http-nio-8080-exec-1] INFO  [req-12345] io.github.dotbrains.hermes.UserService - User alice logged in
+2024-01-10 10:30:45.123 [http-nio-8080-exec-1] INFO  [req-12345] io.github.smeltery.hermes.UserService - User alice logged in
 ```
 
 #### Compact
@@ -124,7 +124,7 @@ layout.setIncludeMarkers(true);
   "timestamp": "2024-01-10T10:30:45.123Z",
   "level": "INFO",
   "thread": "http-nio-8080-exec-1",
-  "logger": "io.github.dotbrains.hermes.UserService",
+  "logger": "io.github.smeltery.hermes.UserService",
   "message": "User alice logged in",
   "mdc": {
     "requestId": "req-12345",
@@ -141,14 +141,14 @@ layout.setIncludeMarkers(true);
   "timestamp": "2024-01-10T10:30:45.123Z",
   "level": "ERROR",
   "thread": "http-nio-8080-exec-1",
-  "logger": "io.github.dotbrains.hermes.OrderService",
+  "logger": "io.github.smeltery.hermes.OrderService",
   "message": "Failed to process order",
   "exception": {
     "class": "java.lang.IllegalStateException",
     "message": "Order already processed",
     "stackTrace": [
-      "io.github.dotbrains.hermes.OrderService.process(OrderService.java:45)",
-      "io.github.dotbrains.hermes.OrderController.createOrder(OrderController.java:78)"
+      "io.github.smeltery.hermes.OrderService.process(OrderService.java:45)",
+      "io.github.smeltery.hermes.OrderController.createOrder(OrderController.java:78)"
     ]
   },
   "mdc": {
@@ -222,7 +222,7 @@ public class CsvLayout implements Layout {
 Output:
 
 ```csv
-"2024-01-10T10:30:45.123Z","INFO","io.github.dotbrains.hermes.UserService","User logged in"
+"2024-01-10T10:30:45.123Z","INFO","io.github.smeltery.hermes.UserService","User logged in"
 ```
 
 ## Configuring Layouts with Appenders

@@ -10,7 +10,7 @@ Add the Spring Boot starter dependency:
 
 ```xml
 <dependency>
-    <groupId>io.github.dotbrains</groupId>
+    <groupId>io.github.smeltery</groupId>
     <artifactId>hermes-spring-boot-starter</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
@@ -20,7 +20,7 @@ Add the Spring Boot starter dependency:
 
 ```gradle
 dependencies {
-    implementation 'io.github.dotbrains:hermes-spring-boot-starter:1.0.0-SNAPSHOT'
+    implementation 'io.github.smeltery:hermes-spring-boot-starter:1.0.0-SNAPSHOT'
 }
 ```
 
@@ -34,7 +34,7 @@ hermes:
   level:
     root: INFO
     packages:
-      io.github.dotbrains: DEBUG
+      io.github.smeltery: DEBUG
       com.example: TRACE
 
   # Log pattern for console output
@@ -78,7 +78,7 @@ public class HermesProperties {
 ### With @InjectLogger
 
 ```java
-import io.github.dotbrains.hermes.InjectLogger;
+import io.github.smeltery.hermes.InjectLogger;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -94,8 +94,8 @@ public class UserService extends UserServiceHermesLogger {
 ### Manual Logger Creation
 
 ```java
-import io.github.dotbrains.hermes.Logger;
-import io.github.dotbrains.hermes.LoggerFactory;
+import io.github.smeltery.hermes.Logger;
+import io.github.smeltery.hermes.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -113,7 +113,7 @@ public class OrderService {
 Configure MDC automatically for all requests:
 
 ```java
-import io.github.dotbrains.hermes.MDC;
+import io.github.smeltery.hermes.MDC;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -153,8 +153,8 @@ public class MdcFilter extends OncePerRequestFilter {
 Configure appenders programmatically:
 
 ```java
-import io.github.dotbrains.hermes.core.appender.*;
-import io.github.dotbrains.hermes.core.layout.*;
+import io.github.smeltery.hermes.core.appender.*;
+import io.github.smeltery.hermes.core.layout.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -272,7 +272,7 @@ Response:
 ### Custom Health Indicator
 
 ```java
-import io.github.dotbrains.hermes.core.appender.AsyncAppender;
+import io.github.smeltery.hermes.core.appender.AsyncAppender;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;

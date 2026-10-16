@@ -9,7 +9,7 @@ These signatures match the public implementation in the repository. Configure co
 ## Appender
 
 ```java
-import io.github.dotbrains.hermes.core.appender.Appender;
+import io.github.smeltery.hermes.core.appender.Appender;
 
 void append(LogEvent event);
 String getName();
@@ -21,7 +21,7 @@ boolean isStarted();
 ## AsyncAppender
 
 ```java
-import io.github.dotbrains.hermes.core.appender.AsyncAppender;
+import io.github.smeltery.hermes.core.appender.AsyncAppender;
 
 public AsyncAppender(String name, List<Appender> delegates);
 public AsyncAppender(String name, List<Appender> delegates, int bufferSize);
@@ -35,7 +35,7 @@ public boolean isStarted();
 ## ConsoleAppender
 
 ```java
-import io.github.dotbrains.hermes.core.appender.ConsoleAppender;
+import io.github.smeltery.hermes.core.appender.ConsoleAppender;
 
 public ConsoleAppender(String name);
 public ConsoleAppender(String name, PatternLayout layout);
@@ -50,7 +50,7 @@ public boolean isStarted();
 ## FileAppender
 
 ```java
-import io.github.dotbrains.hermes.core.appender.FileAppender;
+import io.github.smeltery.hermes.core.appender.FileAppender;
 
 public FileAppender(String name, String filePath);
 public FileAppender(String name, String filePath, PatternLayout layout);
@@ -64,7 +64,7 @@ public boolean isStarted();
 ## LogstashAppender
 
 ```java
-import io.github.dotbrains.hermes.core.appender.LogstashAppender;
+import io.github.smeltery.hermes.core.appender.LogstashAppender;
 
 public LogstashAppender(String name, String host);
 public LogstashAppender(String name, String host, int port);
@@ -78,7 +78,7 @@ public boolean isStarted();
 ## RollingFileAppender
 
 ```java
-import io.github.dotbrains.hermes.core.appender.RollingFileAppender;
+import io.github.smeltery.hermes.core.appender.RollingFileAppender;
 
 public RollingFileAppender(String name, String filePath);
 public RollingFileAppender(String name, String filePath, long maxFileSize, int maxHistory);

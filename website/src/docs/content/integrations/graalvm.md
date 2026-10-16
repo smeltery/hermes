@@ -119,7 +119,7 @@ Hermes includes native-image metadata in `hermes-core`:
 ### Location
 
 ```
-hermes-core/src/main/resources/META-INF/native-image/io.github.dotbrains/hermes-core/
+hermes-core/src/main/resources/META-INF/native-image/io.github.smeltery/hermes-core/
 ├── reflect-config.json
 ├── resource-config.json
 ├── jni-config.json
@@ -131,11 +131,11 @@ hermes-core/src/main/resources/META-INF/native-image/io.github.dotbrains/hermes-
 ```json
 [
   {
-    "name": "io.github.dotbrains.hermes.core.HermesLoggerProvider",
+    "name": "io.github.smeltery.hermes.core.HermesLoggerProvider",
     "methods": [{ "name": "<init>", "parameterTypes": [] }]
   },
   {
-    "name": "io.github.dotbrains.hermes.core.HermesLogger",
+    "name": "io.github.smeltery.hermes.core.HermesLogger",
     "methods": [{ "name": "<init>", "parameterTypes": ["java.lang.String"] }]
   }
 ]
@@ -364,7 +364,7 @@ hermes:
 ### Application Code
 
 ```java
-import io.github.dotbrains.hermes.InjectLogger;
+import io.github.smeltery.hermes.InjectLogger;
 
 @InjectLogger
 public class NativeApplication extends NativeApplicationHermesLogger {
@@ -402,18 +402,18 @@ public class NativeApplication extends NativeApplicationHermesLogger {
 
     <dependencies>
         <dependency>
-            <groupId>io.github.dotbrains</groupId>
+            <groupId>io.github.smeltery</groupId>
             <artifactId>hermes-api</artifactId>
             <version>${hermes.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.github.dotbrains</groupId>
+            <groupId>io.github.smeltery</groupId>
             <artifactId>hermes-processor</artifactId>
             <version>${hermes.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.dotbrains</groupId>
+            <groupId>io.github.smeltery</groupId>
             <artifactId>hermes-core</artifactId>
             <version>${hermes.version}</version>
             <scope>runtime</scope>
@@ -428,7 +428,7 @@ public class NativeApplication extends NativeApplicationHermesLogger {
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
-                            <groupId>io.github.dotbrains</groupId>
+                            <groupId>io.github.smeltery</groupId>
                             <artifactId>hermes-processor</artifactId>
                             <version>${hermes.version}</version>
                         </path>

@@ -7,8 +7,8 @@ Move appender delivery to a background consumer with the LMAX Disruptor ring buf
 AsyncAppender wraps a list of delegate appenders. Calling start() starts the delegates and the Disruptor consumer. Calling stop() shuts down the Disruptor, waits for queued events to be processed, and then stops the delegates.
 
 ```java
-import io.github.dotbrains.hermes.core.appender.AsyncAppender;
-import io.github.dotbrains.hermes.core.appender.ConsoleAppender;
+import io.github.smeltery.hermes.core.appender.AsyncAppender;
+import io.github.smeltery.hermes.core.appender.ConsoleAppender;
 import java.util.List;
 
 ConsoleAppender console = new ConsoleAppender("console");

@@ -8,27 +8,27 @@ import { CodeBlock } from '../CodeBlock';
 const dependencies = {
   Maven: `<dependencies>
   <dependency>
-    <groupId>io.github.dotbrains</groupId>
+    <groupId>io.github.smeltery</groupId>
     <artifactId>hermes-api</artifactId>
     <version>1.0.0</version>
   </dependency>
   <dependency>
-    <groupId>io.github.dotbrains</groupId>
+    <groupId>io.github.smeltery</groupId>
     <artifactId>hermes-core</artifactId>
     <version>1.0.0</version>
     <scope>runtime</scope>
   </dependency>
   <dependency>
-    <groupId>io.github.dotbrains</groupId>
+    <groupId>io.github.smeltery</groupId>
     <artifactId>hermes-processor</artifactId>
     <version>1.0.0</version>
     <scope>provided</scope>
   </dependency>
 </dependencies>`,
   Gradle: `dependencies {
-    implementation 'io.github.dotbrains:hermes-api:1.0.0'
-    runtimeOnly 'io.github.dotbrains:hermes-core:1.0.0'
-    annotationProcessor 'io.github.dotbrains:hermes-processor:1.0.0'
+    implementation 'io.github.smeltery:hermes-api:1.0.0'
+    runtimeOnly 'io.github.smeltery:hermes-core:1.0.0'
+    annotationProcessor 'io.github.smeltery:hermes-processor:1.0.0'
 }`,
 };
 

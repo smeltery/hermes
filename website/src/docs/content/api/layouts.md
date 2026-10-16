@@ -9,7 +9,7 @@ These signatures match the public implementation in the repository. Configure co
 ## JsonLayout
 
 ```java
-import io.github.dotbrains.hermes.core.layout.JsonLayout;
+import io.github.smeltery.hermes.core.layout.JsonLayout;
 
 public JsonLayout();
 public JsonLayout(boolean prettyPrint);
@@ -19,7 +19,7 @@ public String format(LogEvent event);
 ## PatternLayout
 
 ```java
-import io.github.dotbrains.hermes.core.layout.PatternLayout;
+import io.github.smeltery.hermes.core.layout.PatternLayout;
 
 public PatternLayout();
 public PatternLayout(String pattern);

@@ -7,8 +7,8 @@ Practical starting points for Java applications, Spring Boot services, and Kotli
 Use LoggerFactory when you want a logger without generating a superclass.
 
 ```java
-import io.github.dotbrains.hermes.Logger;
-import io.github.dotbrains.hermes.LoggerFactory;
+import io.github.smeltery.hermes.Logger;
+import io.github.smeltery.hermes.LoggerFactory;
 
 public class OrderService {
     private static final Logger log =
@@ -25,7 +25,7 @@ public class OrderService {
 Associate a request identifier with messages from the current thread. Always clear context when the request finishes.
 
 ```java
-import io.github.dotbrains.hermes.MDC;
+import io.github.smeltery.hermes.MDC;
 
 MDC.put("requestId", requestId);
 try {
@@ -56,7 +56,7 @@ hermes:
 The Kotlin extension restores the previous context after the block, including when the block throws.
 
 ```kotlin
-import io.github.dotbrains.hermes.kotlin.*
+import io.github.smeltery.hermes.kotlin.*
 
 class OrderService {
     private val log = OrderService::class.logger

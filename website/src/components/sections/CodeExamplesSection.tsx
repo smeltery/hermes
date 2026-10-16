@@ -9,7 +9,7 @@ const examples = [
     label: "Java",
     icon: "java" as const,
     file: "OrderService.java",
-    code: `import io.github.dotbrains.hermes.InjectLogger;
+    code: `import io.github.smeltery.hermes.InjectLogger;
 
 @InjectLogger
 public class OrderService
@@ -58,7 +58,7 @@ public class OrderService
     label: "Kotlin",
     icon: "kotlin" as const,
     file: "OrderService.kt",
-    code: `import io.github.dotbrains.hermes.kotlin.*
+    code: `import io.github.smeltery.hermes.kotlin.*
 
 class OrderService {
     private val log = OrderService::class.logger
