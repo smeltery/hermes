@@ -201,7 +201,7 @@
   .marketing-mobile-controls {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0;
     margin-left: auto;
   }
   .marketing-menu-toggle {
@@ -209,7 +209,7 @@
     align-items: center;
     gap: 10px;
     min-height: 44px;
-    padding: 10px 16px;
+    padding: 10px 8px;
     border: 0;
     background: transparent;
     border-radius: 999px;
