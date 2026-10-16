@@ -14,8 +14,8 @@ Markers are named tags attached to log events that can be used to:
 ## Basic Usage
 
 ```java
-import io.hermes.Marker;
-import io.hermes.MarkerFactory;
+import io.github.smeltery.hermes.Marker;
+import io.github.smeltery.hermes.MarkerFactory;
 
 // Create markers
 Marker securityMarker = MarkerFactory.getMarker("SECURITY");
@@ -114,7 +114,8 @@ PatternLayout layout = new PatternLayout(
 ```
 
 Example output:
-```
+
+```text
 2024-01-10 10:30:45 [http-nio-8080-exec-1] INFO  SECURITY com.example.AuthService - User alice logged in
 2024-01-10 10:30:46 [http-nio-8080-exec-2] WARN  SLOW_QUERY com.example.OrderService - Query exceeded threshold: 1500 ms
 ```

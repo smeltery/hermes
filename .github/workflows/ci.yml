@@ -1,72 +1,43 @@
-name: CI Build & Test
-
+name: ci
 on:
   push:
-    branches: [ master, main, develop ]
+    branches: [master]
   pull_request:
-    branches: [ master, main, develop ]
-
+  workflow_dispatch:
+permissions:
+  contents: read
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
-  build:
-    name: Build on Java ${{ matrix.java }}
-    runs-on: ubuntu-latest
+  verify:
+    name: Flox / full checks
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
-
-    strategy:
-      matrix:
-        java: [ '17', '21', '23' ]
-      fail-fast: false
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Set up JDK ${{ matrix.java }}
-        uses: actions/setup-java@v4
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+      - uses: flox/install-flox-action@5bb9eaaffbeaa699a8251a1ae21ecf4c8e0e37d4 # v2
         with:
-          java-version: ${{ matrix.java }}
-          distribution: 'temurin'
-          cache: 'maven'
-      
-      - name: Cache Maven packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-      
-      - name: Build with Maven
-        run: mvn clean install -B -V
-        env:
-          MAVEN_OPTS: -Xmx1024m
-      
-      - name: Run tests
-        run: mvn test -B
-        env:
-          MAVEN_OPTS: -Xmx1024m
-      
-      - name: Upload test results
+          version: 1.18.2
+      - name: Install locked dependencies
+        run: flox activate -- bun install --frozen-lockfile
+      - name: Same checks as pre-commit
+        run: flox activate -- bash scripts/check.sh
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
-        uses: actions/upload-artifact@v4
         with:
-          name: test-results-java-${{ matrix.java }}
-          path: |
-            **/target/surefire-reports/*.xml
-            **/target/surefire-reports/*.txt
-          retention-days: 7
-      
-      - name: Upload build artifacts
-        if: matrix.java == '17'
-        uses: actions/upload-artifact@v4
+          name: java-17-test-results
+          path: '**/target/surefire-reports/'
+          if-no-files-found: error
+  java-21:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
         with:
-          name: maven-artifacts
-          path: |
-            **/target/*.jar
-            !**/target/*-sources.jar
-            !**/target/*-javadoc.jar
-          retention-days: 7
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - run: mvn -B -ntp clean verify
+      - run: bash scripts/check-processor.sh

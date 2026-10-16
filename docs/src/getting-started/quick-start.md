@@ -4,66 +4,66 @@ Get up and running with Hermes in just a few minutes.
 
 ## Installation
 
-=== "Maven"
+### Maven
 
-    Add the following dependencies to your `pom.xml`:
+Add the following dependencies to your `pom.xml`:
 
-    ```xml
-    <dependencies>
-        <!-- Core API -->
-        <dependency>
-            <groupId>io.github.smeltery</groupId>
-            <artifactId>hermes-api</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+```xml
+<dependencies>
+    <!-- Core API -->
+    <dependency>
+        <groupId>io.github.smeltery</groupId>
+        <artifactId>hermes-api</artifactId>
+        <version>1.0.0</version>
+    </dependency>
 
-        <!-- Annotation processor (for @InjectLogger) -->
-        <dependency>
-            <groupId>io.github.smeltery</groupId>
-            <artifactId>hermes-processor</artifactId>
-            <version>1.0.0</version>
-            <scope>provided</scope>
-        </dependency>
+    <!-- Annotation processor (for @InjectLogger) -->
+    <dependency>
+        <groupId>io.github.smeltery</groupId>
+        <artifactId>hermes-processor</artifactId>
+        <version>1.0.0</version>
+        <scope>provided</scope>
+    </dependency>
 
-        <!-- Core implementation -->
-        <dependency>
-            <groupId>io.github.smeltery</groupId>
-            <artifactId>hermes-core</artifactId>
-            <version>1.0.0</version>
-            <scope>runtime</scope>
-        </dependency>
-    </dependencies>
+    <!-- Core implementation -->
+    <dependency>
+        <groupId>io.github.smeltery</groupId>
+        <artifactId>hermes-core</artifactId>
+        <version>1.0.0</version>
+        <scope>runtime</scope>
+    </dependency>
+</dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>io.github.smeltery</groupId>
-                            <artifactId>hermes-processor</artifactId>
-                            <version>1.0.0</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    ```
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <annotationProcessorPaths>
+                    <path>
+                        <groupId>io.github.smeltery</groupId>
+                        <artifactId>hermes-processor</artifactId>
+                        <version>1.0.0</version>
+                    </path>
+                </annotationProcessorPaths>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
 
-=== "Gradle"
+### Gradle
 
-    Add the following to your `build.gradle`:
+Add the following to your `build.gradle`:
 
-    ```gradle
-    dependencies {
-        implementation 'io.github.smeltery:hermes-api:1.0.0'
-        annotationProcessor 'io.github.smeltery:hermes-processor:1.0.0'
-        runtimeOnly 'io.github.smeltery:hermes-core:1.0.0'
-    }
-    ```
+```gradle
+dependencies {
+    implementation 'io.github.smeltery:hermes-api:1.0.0'
+    annotationProcessor 'io.github.smeltery:hermes-processor:1.0.0'
+    runtimeOnly 'io.github.smeltery:hermes-core:1.0.0'
+}
+```
 
 ## Your First Logger
 
@@ -72,14 +72,14 @@ Get up and running with Hermes in just a few minutes.
 The easiest way to use Hermes is with the `@InjectLogger` annotation:
 
 ```java
-import io.github.smeltery.InjectLogger;
+import io.github.smeltery.hermes.InjectLogger;
 
 @InjectLogger
 public class UserService extends UserServiceHermesLogger {
 
     public void createUser(String username) {
         log.info("Creating user: {}", username);
-        
+
         try {
             saveToDatabase(username);
             log.info("User {} created successfully", username);
@@ -90,16 +90,17 @@ public class UserService extends UserServiceHermesLogger {
 }
 ```
 
-!!! info "How it works"
-    The annotation processor generates a base class `UserServiceHermesLogger` with a protected `Logger log` field. Your class simply extends it and uses `log` directly.
+> **How it works**
+>
+> The annotation processor generates a base class `UserServiceHermesLogger` with a protected `Logger log` field. Your class simply extends it and uses `log` directly.
 
 ### Manual Logger Creation
 
 If you prefer not to use annotation processing:
 
 ```java
-import io.github.smeltery.Logger;
-import io.github.smeltery.LoggerFactory;
+import io.github.smeltery.hermes.Logger;
+import io.github.smeltery.hermes.LoggerFactory;
 
 public class UserService {
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
@@ -137,8 +138,9 @@ log.debug("Processing order {} for user {} with total {}", orderId, username, to
 log.error("Failed to process order {}", orderId, exception);
 ```
 
-!!! tip "Performance"
-    Parameterized logging avoids string concatenation, which is more efficient and only executed if the log level is enabled.
+> **Performance**
+>
+> Parameterized logging avoids string concatenation, which is more efficient and only executed if the log level is enabled.
 
 ## Next Steps
 

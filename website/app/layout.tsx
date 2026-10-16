@@ -7,7 +7,7 @@ const description =
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata: Metadata = {
-  metadataBase: siteUrl ? new URL(siteUrl) : undefined,
+  metadataBase: new URL(siteUrl || "http://localhost:3003"),
   title,
   description,
   alternates: siteUrl ? { canonical: '/' } : undefined,

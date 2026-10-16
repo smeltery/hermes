@@ -41,14 +41,11 @@ public class OrderService
     root: INFO
     packages:
       com.example: DEBUG
-  async:
-    enabled: true
-    queue-size: 1024`,
+`,
     output: [
       "root                 INFO",
       "com.example          DEBUG",
-      "async.enabled        true",
-      "async.queue-size     1024",
+
     ],
     outputTitle: "orders-api · configuration",
     outputNote: "Resolved settings from application.yml",

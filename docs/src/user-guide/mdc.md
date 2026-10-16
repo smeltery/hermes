@@ -9,7 +9,7 @@ MDC is a map of key-value pairs attached to the current thread. Values set in th
 ## Basic Usage
 
 ```java
-import io.hermes.MDC;
+import io.github.smeltery.hermes.MDC;
 
 // Set values
 MDC.put("requestId", "req-12345");
@@ -85,7 +85,8 @@ PatternLayout layout = new PatternLayout(
 ```
 
 Example output:
-```
+
+```text
 2024-01-10 10:30:45 [http-nio-8080-exec-1] INFO  [req-12345] [user-789] com.example.UserService - User logged in
 ```
 

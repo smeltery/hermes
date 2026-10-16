@@ -7,11 +7,11 @@ Hermes provides the `@InjectLogger` annotation for zero-boilerplate logger injec
 Annotate your class with `@InjectLogger` and extend the generated base class:
 
 ```java
-import io.hermes.InjectLogger;
+import io.github.smeltery.hermes.InjectLogger;
 
 @InjectLogger
 public class UserService extends UserServiceHermesLogger {
-    
+
     public void createUser(String username) {
         log.info("Creating user: {}", username);
     }
@@ -50,7 +50,8 @@ No configuration needed - the annotation processor runs automatically during Mav
 ## Viewing Generated Sources
 
 Generated sources are located in:
-```
+
+```text
 target/generated-sources/annotations/
 ```
 
@@ -59,8 +60,8 @@ target/generated-sources/annotations/
 If you prefer not to use annotation processing, create loggers manually:
 
 ```java
-import io.hermes.Logger;
-import io.hermes.LoggerFactory;
+import io.github.smeltery.hermes.Logger;
+import io.github.smeltery.hermes.LoggerFactory;
 
 public class UserService {
     private static final Logger log = LoggerFactory.getLogger(UserService.class);

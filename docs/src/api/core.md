@@ -9,7 +9,7 @@ Main logging interface with level-specific methods.
 ### Package
 
 ```java
-io.github.smeltery.Logger
+io.github.smeltery.hermes.Logger
 ```
 
 ### Methods
@@ -130,7 +130,7 @@ Static factory for obtaining Logger instances.
 ### Package
 
 ```java
-io.github.smeltery.LoggerFactory
+io.github.smeltery.hermes.LoggerFactory
 ```
 
 ### Methods
@@ -157,7 +157,7 @@ Enumeration of log levels.
 ### Package
 
 ```java
-io.github.smeltery.LogLevel
+io.github.smeltery.hermes.LogLevel
 ```
 
 ### Values
@@ -193,7 +193,7 @@ Thread-local key-value storage for contextual logging.
 ### Package
 
 ```java
-io.github.smeltery.MDC
+io.github.smeltery.hermes.MDC
 ```
 
 ### Methods
@@ -236,7 +236,7 @@ Marker for categorizing log events.
 ### Package
 
 ```java
-io.github.smeltery.Marker
+io.github.smeltery.hermes.Marker
 ```
 
 ### Methods
@@ -273,7 +273,7 @@ Factory for obtaining Marker instances.
 ### Package
 
 ```java
-io.github.smeltery.MarkerFactory
+io.github.smeltery.hermes.MarkerFactory
 ```
 
 ### Methods
@@ -304,7 +304,7 @@ Annotation for compile-time logger injection.
 ### Package
 
 ```java
-io.github.smeltery.InjectLogger
+io.github.smeltery.hermes.InjectLogger
 ```
 
 ### Target
@@ -322,7 +322,7 @@ public @interface InjectLogger {
 @InjectLogger
 public class UserService extends UserServiceHermesLogger {
     // protected Logger log is available
-    
+
     public void createUser(String username) {
         log.info("Creating user: {}", username);
     }
@@ -368,6 +368,6 @@ public class CustomLoggerProvider implements LoggerProvider {
 
 Register in `META-INF/services/io.github.smeltery.spi.LoggerProvider`:
 
-```
+```text
 com.example.CustomLoggerProvider
 ```

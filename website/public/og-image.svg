@@ -1,1 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#f8f5ef"/><rect x="490" y="62" width="220" height="62" rx="31" fill="#f0e0d3"/><path d="m529 76-16 22h12l-2 15 17-23h-12z" fill="#a45d3c"/><text x="551" y="104" fill="#302923" font-family="Arial,sans-serif" font-size="31" font-weight="bold">hermes.</text><text x="600" y="280" text-anchor="middle" fill="#302923" font-family="Arial,sans-serif" font-size="88" font-weight="bold" letter-spacing="-5">Good logs.</text><text x="600" y="380" text-anchor="middle" fill="#302923" font-family="Georgia,serif" font-size="92" font-style="italic" letter-spacing="-4">Less ceremony.</text><text x="600" y="467" text-anchor="middle" fill="#71645a" font-family="Arial,sans-serif" font-size="24">Logging for Java that stays out of your way.</text><text x="600" y="552" text-anchor="middle" fill="#71645a" font-family="Arial,sans-serif" font-size="18">Java 17+ · Spring Boot · Kotlin</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <title>Hermes — Good logs. Less ceremony.</title>
+  <desc>A Java logging library with compile-time logger generation and structured output.</desc>
+  <defs>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#513425" flood-opacity=".12"/></filter>
+    <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#faf7f1"/><stop offset="1" stop-color="#eee0d0"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#302923">
+    <rect x="62" y="48" width="42" height="42" rx="12" fill="#edd5bf"/>
+    <path d="m86 54-15 21h11l-2 13 15-21H84z" fill="#a45d3c"/>
+    <text x="117" y="80" font-size="34" font-weight="700" letter-spacing="-1.8">hermes<tspan fill="#a45d3c">.</tspan></text>
+    <text x="1138" y="77" text-anchor="end" font-size="14" fill="#7b695c">A little library. A lot less boilerplate.</text>
+    <text x="62" y="240" font-size="72" font-weight="700" letter-spacing="-4">Good logs.</text>
+    <text x="62" y="321" font-family="Georgia, serif" font-style="italic" font-size="72" letter-spacing="-3.5">Less ceremony.</text>
+    <text x="65" y="379" font-size="21" fill="#78675b">Logging for Java that stays</text>
+    <text x="65" y="410" font-size="21" fill="#78675b">out of your way.</text>
+    <g transform="translate(64 459)"><rect width="207" height="44" rx="22" fill="#3a2d26"/><text x="23" y="28" font-size="14" fill="#fffaf4">Write it. Hermes delivers.</text></g>
+    <g filter="url(#shadow)">
+      <rect x="609" y="161" width="529" height="250" rx="18" fill="#fffdfa" stroke="#dfd0c1"/>
+      <path d="M609 208h529" stroke="#e6d9cc"/>
+      <circle cx="632" cy="185" r="4" fill="#d9c9ba"/><circle cx="647" cy="185" r="4" fill="#d9c9ba"/><circle cx="662" cy="185" r="4" fill="#d9c9ba"/>
+      <text x="1116" y="189" text-anchor="end" font-size="12" fill="#887362">OrderService.java</text>
+      <g font-family="monospace" font-size="16">
+        <text x="636" y="247" fill="#a45d3c">@InjectLogger</text>
+        <text x="636" y="279">class OrderService</text>
+        <text x="655" y="308">extends OrderServiceHermesLogger {</text>
+        <text x="655" y="349">log.info(<tspan fill="#a45d3c">"Order {} accepted"</tspan>, id);</text>
+        <text x="636" y="383">}</text>
+      </g>
+      <rect x="654" y="429" width="484" height="99" rx="14" fill="#302923"/>
+      <g font-family="monospace" font-size="13"><text x="678" y="462" fill="#c9ac95">08:35:07.142 <tspan fill="#e6be95">INFO</tspan> OrderService</text><text x="678" y="492" fill="#fff7ef">Order ORD-1042 accepted</text></g>
+    </g>
+    <path d="M627 416v36h15" fill="none" stroke="#af8060" stroke-width="2"/><path d="m638 447 5 5-5 5" fill="none" stroke="#af8060" stroke-width="2"/>
+    <path d="M62 564h1076" stroke="#dac8b6"/>
+    <text x="64" y="596" font-size="13" fill="#7b695c">JAVA 17+  /  SPRING BOOT  /  KOTLIN</text>
+    <text x="1138" y="596" text-anchor="end" font-size="13" fill="#7b695c">smeltery / hermes</text>
+  </g>
+</svg>

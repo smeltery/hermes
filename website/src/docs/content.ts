@@ -20,7 +20,7 @@ export function getDoc(route: string): DocPage | undefined {
   const page = pages.find((item) => item.path === route);
   if (!page) return undefined;
   const markdown = fs.readFileSync(
-    path.join(process.cwd(), 'src/docs/content', page.file),
+    path.join(process.cwd(), '../docs/src', page.file),
     'utf8',
   );
   const body = markdown.replace(/^# .*\n+/, '');

@@ -135,70 +135,8 @@
 .sequence-scroll {
   overflow: auto;
 }
-.sequence-scroll svg {
-  display: block;
-  width: 100%;
-  min-width: 620px;
-}
-.sequence-scroll rect {
-  fill: #f3e6d8;
-  stroke: #cfb298;
-}
-.sequence-scroll text {
-  font: 12px var(--font);
-  fill: #805137;
-}
-.sequence-lifeline {
-  stroke: #dbc4af;
-  stroke-dasharray: 4 5;
-  fill: none;
-}
-.sequence-arrow {
-  stroke: #9b6947;
-  fill: none;
-}
-.docs-diagram figcaption {
-  padding: 12px 12px 0;
-  font-size: 12px;
-  line-height: 1.7;
-  color: var(--muted);
-}
-.diagram-states {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding: 20px 0;
-  font-size: 12px;
-}
-.diagram-states span,
-.docs-module-map span,
-.docs-module-map strong {
-  padding: 15px;
-  border: 1px solid #cfb298;
-  border-radius: 8px;
-  background: #f3e6d8;
-}
-.docs-module-map {
-  display: grid;
-  gap: 14px;
-  justify-items: center;
-  padding: 15px;
-  font-size: 13px;
-}
-.docs-module-map > div {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.docs-module-map p {
-  text-align: center;
-  font-size: 12px;
-}
-.docs-module-map b {
-  color: #956748;
-}
+.sequence-scroll svg { display: block; max-width: 100%; height: auto; margin: auto; }
+.sequence-scroll pre { white-space: pre-wrap; font-size: 12px; }
 /* Keep mobile geometry aligned with the Convrt documentation shell. */
 @media (max-width: 700px) {
   .docs-page {

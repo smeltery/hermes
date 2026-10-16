@@ -1,0 +1,250 @@
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 95px;
+  }
+  .shell {
+    width: calc(100% - 36px);
+  }
+  .section {
+    margin-top: 76px;
+  }
+  .site-header {
+    top: 12px;
+    padding-top: 12px;
+  }
+  .navigation {
+    width: calc(100% - 36px);
+    justify-content: space-between;
+  }
+  .desktop-links {
+    display: none;
+  }
+  .hero {
+    padding-top: 64px;
+    padding-bottom: 38px;
+  }
+  .hero h1 {
+    font-size: clamp(46px, 12vw, 65px);
+  }
+  .hero .eyebrow {
+    font-size: 11px;
+    margin-bottom: 25px;
+  }
+  .hero-description {
+    font-size: 14px;
+    margin-block: 25px;
+  }
+  .hero .fine {
+    font-size: 10px;
+  }
+  .window-label {
+    display: none;
+  }
+  .window-bar {
+    padding: 14px 17px;
+    justify-content: space-between;
+  }
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
+  .editor {
+    padding: 12px 15px 16px;
+  }
+  .editor pre {
+    min-height: 215px;
+    font-size: 10px;
+  }
+  .line-number {
+    min-width: 22px;
+  }
+  .output-panel {
+    margin: 0 10px 10px;
+    padding: 20px;
+    min-height: 190px;
+  }
+  .output-lines {
+    padding-top: 7px;
+  }
+  .output-footnote {
+    display: none;
+  }
+  .demo-caption {
+    padding: 14px 17px;
+    font-size: 10px;
+  }
+  .demo-caption > span:last-child {
+    display: none;
+  }
+  .demo-note {
+    font-size: 9px;
+  }
+  .compatibility {
+    gap: 17px 22px;
+    padding-top: 29px;
+    font-size: 11px;
+  }
+  .how,
+  .architecture,
+  .installation {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .how {
+    padding-bottom: 55px;
+  }
+  .section-intro > p:not(.eyebrow) {
+    margin-top: 20px;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .feature-visual {
+    height: 170px;
+    padding: 30px;
+  }
+  .feature-body {
+    padding: 24px;
+  }
+  .feature-body > p:last-child {
+    font-size: 13px;
+  }
+  .diagram-labels {
+    font-size: 10px;
+  }
+  .context-card {
+    width: min(100%, 260px);
+    margin: auto;
+    font-size: 10px;
+    padding: 15px;
+  }
+  .destination-diagram {
+    gap: 40px;
+  }
+  .destination-diagram > svg {
+    padding: 20px;
+  }
+  .architecture {
+    padding-block: 45px;
+  }
+  .integration-list article {
+    gap: 13px;
+    flex-wrap: wrap;
+  }
+  .integration-list article > div {
+    flex: 1;
+  }
+  .integration-list article > a {
+    margin-left: 58px;
+    margin-top: -7px;
+  }
+  .installation .section-intro .fine {
+    font-size: 11px;
+  }
+  .install-header {
+    padding: 12px;
+  }
+  .closing {
+    padding: 45px 20px;
+  }
+  .closing h2 {
+    font-size: 32px;
+  }
+  .closing-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer {
+    padding-top: 55px;
+  }
+  .footer-top {
+    flex-direction: column;
+    gap: 35px;
+  }
+  .footer-links {
+    justify-content: space-between;
+    gap: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.brand-icon {
+  display: inline-block;
+  object-fit: contain;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.compatibility > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.example-options button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.not-found h1 {
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+  font-weight: 550;
+}
+
+/* Match Convrt's compact marketing composition without affecting docs. */
+.mobile-links {
+  display: none;
+}
+@media (max-width: 700px) {
+  .site-header {
+    line-height: normal;
+  }
+  .navigation {
+    width: auto;
+    max-width: calc(100% - 24px);
+    gap: 0;
+  }
+  .desktop-links {
+    display: none;
+  }
+  .mobile-links {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .mobile-links a {
+    padding: 10px 8px;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    border-radius: 999px;
+  }
+  .mobile-links a:hover {
+    background: var(--accent-soft);
+  }
+  .navigation > a {
+    display: inline-flex;
+    padding: 8px 18px;
+  }
+  .navigation .brand {
+    font-size: 16px;
+  }
+  .navigation .brand-mark {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    border-radius: 7px;
+    flex-shrink: 0;
+  }
+}

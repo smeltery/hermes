@@ -7,6 +7,7 @@ This module contains working examples demonstrating how to use Hermes logging li
 ### 1. Basic Logging Demo (`Demo.java`)
 
 Demonstrates core Hermes logging features:
+
 - Basic log levels (TRACE, DEBUG, INFO, WARN, ERROR)
 - Parameterized logging with `{}` placeholders
 - MDC (Mapped Diagnostic Context) for thread-local context
@@ -14,6 +15,7 @@ Demonstrates core Hermes logging features:
 - Conditional logging with `isDebugEnabled()` guards
 
 **Run:**
+
 ```fish
 mvn clean compile exec:java -Dexec.mainClass="io.github.smeltery.hermes.examples.Demo" -pl hermes-examples
 ```
@@ -21,17 +23,20 @@ mvn clean compile exec:java -Dexec.mainClass="io.github.smeltery.hermes.examples
 ### 2. Annotation Processor Demo (`AnnotationProcessorDemo.java`)
 
 Demonstrates zero-boilerplate logging using the `@InjectLogger` annotation:
+
 - Automatic logger field injection at compile-time
 - No manual `LoggerFactory.getLogger()` calls needed
 - Base class generation via annotation processor
 - GraalVM native-image compatible (no runtime reflection)
 
 **Run:**
+
 ```fish
 mvn clean compile exec:java -Dexec.mainClass="io.github.smeltery.hermes.examples.AnnotationProcessorDemo" -pl hermes-examples
 ```
 
 **View generated code:**
+
 ```fish
 ls -la hermes-examples/target/generated-sources/annotations/io/github/smeltery/hermes/examples/
 cat hermes-examples/target/generated-sources/annotations/io/github/smeltery/hermes/examples/AnnotationProcessorDemoHermesLogger.java
@@ -81,6 +86,7 @@ This happens during Maven's compile phase, so there's no runtime overhead or ref
 ## Dependencies
 
 This module depends on:
+
 - `hermes-api`: Core logging interfaces
 - `hermes-core`: High-performance implementation
 - `hermes-processor`: Annotation processor (compile-time only)

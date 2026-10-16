@@ -189,6 +189,6 @@
     "group": "Examples",
     "description": "Practical starting points for Java applications, Spring Boot services, and Kotlin projects.",
     "file": "examples.md",
-    "source": "hermes-examples"
+    "source": "docs/src/examples.md"
   }
 ]

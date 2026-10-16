@@ -1,102 +1,58 @@
-# Hermes ⚡
+# Overview
 
-<img src="assets/og-image.svg" alt="Hermes Logo" width="600" />
+What Hermes does, how a log message reaches its destination, and where to start with your application.
 
-![CI Build & Test](https://github.com/smeltery/hermes/workflows/CI%20Build%20%26%20Test/badge.svg)
-![Code Quality](https://github.com/smeltery/hermes/workflows/Code%20Quality/badge.svg)
-![Annotation Processor](https://github.com/smeltery/hermes/workflows/Annotation%20Processor%20Validation/badge.svg)
-![Maven Central](https://img.shields.io/maven-central/v/io.github.smeltery/hermes-parent.svg?label=Maven%20Central)
+## Logging that fits your application
 
-![Java](https://img.shields.io/badge/-Java%2017-007396?style=flat-square&logo=openjdk&logoColor=white)
-![Maven](https://img.shields.io/badge/-Maven-C71A36?style=flat-square&logo=apachemaven&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/-Spring%20Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
-![Kotlin](https://img.shields.io/badge/-Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white)
-![GraalVM](https://img.shields.io/badge/-GraalVM-232F3E?style=flat-square&logo=oracle&logoColor=white)
-![LMAX Disruptor](https://img.shields.io/badge/-LMAX%20Disruptor-FF6B6B?style=flat-square&logo=apache&logoColor=white)
+Hermes is a Java 17+ logging library with a small API, compile-time logger generation, and configurable output. Use familiar log levels and parameterized messages, then choose the appenders and layouts that suit your application.
 
-**High-performance logging library for Java with excellent developer experience**
+The core API works in plain Java. A dedicated Spring Boot starter provides auto-configuration, and the Kotlin module adds lazy logging and scoped context helpers.
 
-Inspired by SLF4J, Hermes is a modern logging library that focuses on performance and developer productivity. Named after the Greek messenger god, Hermes delivers your log messages swiftly and reliably.
+## How a message gets delivered
 
-## Features
+Your application calls a Logger. The runtime checks the level and creates a log event with the message and arguments. Appenders deliver that event to the console, a file, or Logstash. An AsyncAppender uses the LMAX Disruptor ring buffer to move delivery to a background thread.
 
-- 🚀 **Zero-boilerplate logging** - Use `@InjectLogger` annotation for automatic logger field injection
-- ⚡ **High performance** - Async logging with LMAX Disruptor and zero-allocation optimization
-- 🎯 **Fluent API** - Parameterized logging with `{}` placeholders
-- ⚙️ **Easy configuration** - Configure via `application.yaml` with sensible defaults
-- 🔧 **Spring Boot integration** - Auto-configuration support
-- 🧵 **Thread-safe** - Built for concurrent applications
-- 📝 **MDC support** - Mapped Diagnostic Context for contextual logging
-- 🎨 **Markers** - Tag and categorize log messages
-- 📁 **Multiple appenders** - Console, File, RollingFile, Async with Disruptor
-- 📊 **JSON structured logging** - Built-in JSON layout for log aggregation
-- 🎯 **Pattern layouts** - Customizable log output patterns
-
-## Quick Example
-
-```java
-import io.github.smeltery.InjectLogger;
-
-@InjectLogger
-public class UserService extends UserServiceHermesLogger {
-
-    public void createUser(String username) {
-        log.info("Creating user: {}", username);
-
-        try {
-            saveToDatabase(username);
-            log.info("User {} created successfully", username);
-        } catch (Exception e) {
-            log.error("Failed to create user: {}", username, e);
-        }
-    }
-}
+```mermaid
+sequenceDiagram
+    participant App as Your application
+    participant Logger as Hermes runtime
+    participant Output as Appender
+    App->>Logger: log.info(message, args)
+    Logger->>Logger: Check level and create event
+    Logger->>Output: append(event)
+    Output->>Output: Format and write
 ```
 
-## Why Hermes?
+## What you need
 
-### Zero Boilerplate
+- Java 17 or later.
+- Maven 3.8+ or Gradle 7+ to manage dependencies.
+- `hermes-api` at compile time and `hermes-core` at runtime.
+- `hermes-processor` when using `@InjectLogger`.
 
-No more typing `private static final Logger log = LoggerFactory.getLogger(ClassName.class);` in every class. Just add `@InjectLogger` and extend the generated base class.
+Start with the [installation guide](getting-started/installation.md), or follow the [quick start](getting-started/quick-start.md) for a complete first logger.
 
-### Performance First
+## Choose your integration
 
-- **Zero-allocation logging** with ThreadLocal StringBuilder
-- **Async logging** powered by LMAX Disruptor for 10M+ logs/second
-- **Early exit optimization** to avoid formatting when level is disabled
+| Application | Starting point                                              |
+| ----------- | ----------------------------------------------------------- |
+| Plain Java  | LoggerFactory, or @InjectLogger with a generated superclass |
+| Spring Boot | hermes-spring-boot-starter and application.yaml             |
+| Kotlin      | hermes-kotlin extensions and withMDC                        |
+| GraalVM     | Native-image metadata included in hermes-core               |
 
-### Modern Java
+## Context, structure, and delivery
 
-Built for Java 17+, leveraging records, text blocks, and other modern features. Fully compatible with GraalVM native-image.
+Use MDC to associate request IDs and other context with log events. Markers categorize messages independently of severity. JSON layouts make output easier for downstream tools to consume.
 
-## Getting Started
+MDC is thread-local: clear it when a request finishes, and explicitly propagate context when work moves to another thread. Appenders have a lifecycle; start them before use and stop them during application shutdown.
 
-Head over to the [Quick Start Guide](getting-started/quick-start.md) to begin using Hermes in your project.
+## Where to go next
 
-## Architecture
+- [Quick start](getting-started/quick-start.md): add dependencies and write your first log.
+- [Core API](api/core.md): explore Logger, LoggerFactory, MDC, and markers.
+- [Spring Boot](integrations/spring-boot.md): configure a service with YAML.
+- [Architecture](architecture/overview.md): understand modules and message delivery.
+- [Examples](examples.md): practical patterns to adapt to your application.
 
-Hermes follows a modular architecture:
-
-- **hermes-api**: Core interfaces and annotations
-- **hermes-core**: High-performance implementation
-- **hermes-processor**: Annotation processor for `@InjectLogger`
-- **hermes-spring-boot-starter**: Spring Boot auto-configuration
-- **hermes-kotlin**: Kotlin DSL extensions
-- **hermes-examples**: Example applications
-
-Learn more in the [Architecture Overview](architecture/overview.md).
-
-## Comparison with SLF4J
-
-| Feature | SLF4J | Hermes |
-|---------|-------|--------|
-| Logger injection | Manual or Lombok | `@InjectLogger` annotation |
-| Configuration | XML/Properties | YAML with sensible defaults |
-| Async logging | Via Logback/Log4j | Built-in with Disruptor |
-| Performance | Good | Optimized for zero-allocation |
-| Spring Boot | External starters | Native integration |
-| Java version | 8+ | 17+ (modern Java features) |
-
-## License
-
-MIT License - see LICENSE file for details
+Hermes is distributed under the [PolyForm Shield License](https://github.com/smeltery/hermes/blob/master/LICENSE).

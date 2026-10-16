@@ -4,7 +4,7 @@ Hermes follows a modular architecture with clear separation of concerns across s
 
 ## Module Overview
 
-```
+```text
 hermes (parent)
 ├── hermes-api          (Pure API, no dependencies)
 ├── hermes-core         (Implementation, depends on hermes-api)
@@ -80,11 +80,11 @@ module io.github.smeltery.hermes.core {
     requires static com.lmax.disruptor;
 
     exports io.github.smeltery.core;
-    exports io.github.smeltery.core.appender;
-    exports io.github.smeltery.core.layout;
+    exports io.github.smeltery.hermes.core.appender;
+    exports io.github.smeltery.hermes.core.layout;
 
     provides io.github.smeltery.spi.LoggerProvider
-        with io.github.smeltery.core.HermesLoggerProvider;
+        with io.github.smeltery.hermes.core.HermesLoggerProvider;
 }
 ```
 
@@ -147,7 +147,7 @@ hermes:
     root: INFO
     packages:
       com.example: DEBUG
-  pattern: "%d %-5level %logger - %msg%n"
+  pattern: '%d %-5level %logger - %msg%n'
   async:
     enabled: true
     queue-size: 1024
@@ -217,14 +217,14 @@ graph TD
     Spring[hermes-spring-boot-starter]
     Kotlin[hermes-kotlin]
     Examples[hermes-examples]
-    
+
     Processor --> API
     Core --> API
     Kotlin --> API
     Spring --> Core
     Examples --> Spring
     Examples --> Kotlin
-    
+
     style API fill:#42a5f5,stroke:#1565c0,color:#fff
     style Core fill:#ffa726,stroke:#e65100,color:#000
     style Processor fill:#ab47bc,stroke:#6a1b9a,color:#fff

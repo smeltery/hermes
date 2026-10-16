@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
 import { DocsCode } from './DocsCode';
-import { FlowDiagram } from './rendering/FlowDiagram';
+import { MermaidDiagram } from './rendering/MermaidDiagram';
 import { resolveDocLink } from './content';
 
 export function Markdown({ text, file }: { text: string; file: string }) {
@@ -35,7 +35,7 @@ export function Markdown({ text, file }: { text: string; file: string }) {
         code: ({ className, children }) => {
           const language = /language-(\w+)/.exec(className ?? '')?.[1];
           const code = String(children).replace(/\n$/, '');
-          if (language === 'mermaid') return <FlowDiagram source={code} />;
+          if (language === 'mermaid') return <MermaidDiagram source={code} />;
           if (language || String(children).endsWith('\n'))
             return <DocsCode code={code} language={language ?? ''} />;
           return <code>{children}</code>;

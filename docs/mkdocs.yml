@@ -76,6 +76,7 @@ site_dir: ../site
 
 nav:
   - Home: index.md
+  - Examples: examples.md
   - Getting Started:
     - Quick Start: getting-started/quick-start.md
     - Installation: getting-started/installation.md

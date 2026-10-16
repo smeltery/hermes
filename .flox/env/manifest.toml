@@ -1,0 +1,27 @@
+schema-version = "1.18.0"
+
+[install]
+jdk.pkg-path = "jdk17"
+maven.pkg-path = "maven"
+bun.pkg-path = "bun"
+nodejs.pkg-path = "nodejs_22"
+python3.pkg-path = "python3"
+pre-commit.pkg-path = "pre-commit"
+actionlint.pkg-path = "actionlint"
+shellcheck.pkg-path = "shellcheck"
+git.pkg-path = "git"
+
+[vars]
+MAVEN_OPTS = "-Xmx1024m"
+NEXT_TELEMETRY_DISABLED = "1"
+
+[hook]
+on-activate = '''
+  export JAVA_HOME="$(dirname "$(dirname "$(readlink -f "$(command -v javac)")")")"
+'''
+
+[services.website]
+command = "bun run --cwd website dev"
+
+[options]
+systems = ["aarch64-darwin", "x86_64-darwin", "aarch64-linux", "x86_64-linux"]
